@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atomeric — Coming Soon</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -159,6 +160,9 @@ nav{
 @media(max-width:640px){
   body{overflow:auto}
 
+  /* bigger logo */
+  .logo-name{font-size:30px}
+
   .hero{
     height:auto;
     min-height:100dvh;
@@ -167,37 +171,60 @@ nav{
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    gap:28px;
-    padding:90px 24px 48px;
+    gap:36px;
+    padding:100px 28px 60px;
   }
 
   /* background layers stay full-screen */
   .fill{position:fixed}
 
-  /* all content blocks: out of absolute, into flex flow */
+  /* heading block: out of absolute, full width, centered */
   .heading-block{
     position:relative;
     top:auto;left:auto;right:auto;
     width:100%;padding:0;
     pointer-events:auto;
-  }
-  .heading-block h1 span{
-    font-size:clamp(28px,8vw,42px)!important;
+    gap:20px;
   }
 
+  /* bigger headline */
+  .heading-block h1 span{
+    font-size:clamp(38px,10vw,52px)!important;
+    letter-spacing:-0.03em!important;
+  }
+
+  /* bigger badge pill */
+  .pill-sm{padding:7px 18px}
+  .pill-label{font-size:12px}
+
+  /* bigger launching soon pill */
+  .pill-md{padding:13px 28px;margin-top:4px}
+  .pill-label-lg{font-size:16px}
+  .pulse-dot{width:10px;height:10px}
+
+  /* form: full width, out of absolute */
   .form-block{
     position:relative;
     bottom:auto;right:auto;
-    width:100%;max-width:360px;
+    width:100%;max-width:420px;
   }
 
+  /* bigger input and button */
+  .email-input{padding:16px 18px;font-size:16px;border-radius:14px}
+  .submit-btn{padding:16px;font-size:15px;border-radius:100px}
+
+  /* descriptor: below form, centered */
   .desc-block{
     position:relative;
     bottom:auto;left:auto;
-    width:100%;max-width:360px;
+    width:100%;max-width:420px;
     text-align:center;
+    max-width:none;
   }
-  .desc-block p{font-size:13px}
+  .desc-block p{
+    font-size:15px;
+    line-height:1.8;
+  }
 }
 </style>
 
