@@ -1,0 +1,14 @@
+# Reference documents — not part of the codebase
+*.csv
+*.docx
+*.md
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (for future website build)
+node_modules/
+.env
+.env.local
+dist/
