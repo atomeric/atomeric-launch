@@ -36,7 +36,7 @@ const POSTS = [
   {
     slug: 'geo-vs-seo',
     category: 'GEO',
-    title: 'GEO vs SEO: What's the Difference and Why Both Matter in 2025',
+    title: "GEO vs SEO: What's the Difference and Why Both Matter in 2025",
     description:
       'Traditional SEO gets you found on Google. Generative Engine Optimization gets you cited by AI engines like ChatGPT and Perplexity. Here is why ambitious brands need both — and how to start.',
     date: 'August 13, 2025',
