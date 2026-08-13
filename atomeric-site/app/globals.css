@@ -1,0 +1,532 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ── shadcn theme mapping (inline vars → Tailwind utilities) ── */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* ── shadcn component CSS variables (light/dark) ── */
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/* ═══════════════════════════════════════════
+   ATOMERIC DESIGN SYSTEM — Chapter 01
+   ═══════════════════════════════════════════ */
+
+@theme {
+  /* Canvas surfaces */
+  --color-void: #e9f7da;
+  --color-surface-1: #ffffff;
+  --color-surface-2: #f4fced;
+  --color-surface-3: #e0f4cb;
+  --color-surface-hover: rgba(0,115,185,0.05);
+
+  /* Brand accent */
+  --color-teal: #0073b9;
+  --color-teal-light: #4da8e0;
+  --color-gold: #afab4f;
+
+  /* Text hierarchy */
+  --color-text-1: #0c0457;
+  --color-text-2: #1d2b23;
+  --color-text-3: #4d594e;
+
+  /* Semantic borders */
+  --color-border-subtle: rgba(12,4,87,0.1);
+  --color-border-teal: rgba(0,115,185,0.2);
+  --color-teal-dim: rgba(0,115,185,0.12);
+  --color-teal-border: rgba(0,115,185,0.22);
+  --color-gold-dim: rgba(175,171,79,0.12);
+
+  /* Font stacks — resolved via next/font variables on <html> */
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-body: var(--font-dmsans), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), monospace;
+  /* --font-syne is set directly by next/font on <html>; use var(--font-syne) in components */
+
+  /* Spacing scale */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-48: 48px;
+  --spacing-80: 80px;
+  --spacing-120: 120px;
+  --spacing-section: 120px;
+
+  /* Layout */
+  --page-max: 1200px;
+  --page-pad: clamp(20px, 5vw, 80px);
+
+  /* Motion tokens */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-fast: 160ms;
+  --dur-ui: 240ms;
+  --dur-section: 600ms;
+  --dur-hero: 1000ms;
+}
+
+/* ── Base styles ── */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    background: var(--color-void);
+    color: var(--color-text-1);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Blueprint grid — Langbase-inspired coordinate lines */
+  .blueprint-grid {
+    background-image:
+      linear-gradient(rgba(0,115,185,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,115,185,0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    background: var(--color-teal);
+    color: var(--color-void);
+    padding: 12px 22px;
+    border-radius: 9999px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: opacity 240ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    border: none;
+    outline: none;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-primary:active { transform: scale(0.97); }
+  .cta-button { opacity: 1; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-text-2);
+    padding: 10px 22px;
+    border-radius: 9999px;
+    border: 1px solid var(--color-border-subtle);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 240ms cubic-bezier(0.23, 1, 0.32, 1), border-color 240ms cubic-bezier(0.23, 1, 0.32, 1), transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    outline: none;
+  }
+  .btn-ghost:hover { color: var(--color-text-1); border-color: var(--color-border-teal); }
+  .btn-ghost:active { transform: scale(0.97); }
+
+  .nav-link {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--color-text-2);
+    text-decoration: none;
+    transition: color 240ms cubic-bezier(0.23, 1, 0.32, 1);
+    white-space: nowrap;
+  }
+  .nav-link:hover { color: var(--color-text-1); }
+
+  .footer-link:hover { color: var(--color-text-1) !important; }
+
+  /* ── Focus-visible: teal ring for keyboard navigation ── */
+  :focus-visible {
+    outline: 2px solid var(--color-teal);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+  .btn-primary:focus-visible, .btn-ghost:focus-visible {
+    outline-offset: 4px;
+    border-radius: 9999px;
+  }
+
+  /* ── Mobile nav classes ── */
+  .nav-desktop-links { display: flex; align-items: center; gap: 32px; flex: 1; justify-content: center; }
+  .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 10px; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; color: var(--color-text-1); }
+  .nav-cta { display: inline-flex; flex-shrink: 0; }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 49;
+    background: var(--color-void);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 80px 24px 40px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu .mobile-nav-link {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--color-text-1);
+    text-decoration: none;
+    letter-spacing: -1px;
+    transition: color 160ms ease-out;
+  }
+  .mobile-menu .mobile-nav-link:hover { color: var(--color-teal); }
+
+  @media (max-width: 767px) {
+    .nav-desktop-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-cta { display: none; }
+    /* Mobile: stack service cards and process */
+    .services-grid { grid-template-columns: 1fr !important; }
+    .process-two-col { grid-template-columns: 1fr !important; }
+    .process-two-col > div:first-child { position: static !important; margin-bottom: 40px; }
+    .principles-grid { grid-template-columns: 1fr !important; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .services-hero-track-nav { display: none !important; }
+    /* Home page: reduce 128px section padding to mobile-friendly size */
+    #services { padding-top: 72px !important; padding-bottom: 72px !important; }
+    .process-section { padding-top: 72px !important; padding-bottom: 72px !important; }
+    #about { padding-top: 72px !important; padding-bottom: 72px !important; }
+    /* About page hero and grids */
+    .about-hero { padding-top: 100px !important; padding-bottom: 60px !important; }
+    .about-story-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    .about-diff-grid { grid-template-columns: 1fr !important; }
+    .about-who-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    .about-values-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    /* Contact page hero and grids */
+    .contact-hero { padding-top: 100px !important; padding-bottom: 60px !important; }
+    .contact-layout { grid-template-columns: 1fr !important; gap: 40px !important; }
+    .contact-call-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    .contact-form-row { grid-template-columns: 1fr !important; }
+    /* Global overflow containment */
+    html, body { overflow-x: hidden; }
+    section { overflow-x: hidden; }
+    /* Services — track blocks stack vertically */
+    .track-block { flex-direction: column !important; gap: 32px !important; }
+    .track-block-left, .track-block-right { width: 100% !important; flex: none !important; }
+    /* Services — why grid: 2 columns on mobile */
+    .why-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    /* Services — cap pills allowed to wrap */
+    .cap-pill { white-space: normal !important; }
+    /* Services — overview labels row wraps */
+    .services-overview-labels { flex-wrap: wrap !important; gap: 12px !important; }
+    /* Process — step blocks stack vertically */
+    .step-block { flex-direction: column !important; gap: 32px !important; }
+    .step-block-left, .step-block-right { width: 100% !important; flex: none !important; }
+    /* Watermarks hidden on mobile */
+    .track-watermark-num,
+    .step-watermark-num { display: none !important; }
+    /* Mobile step badge — shown on mobile only */
+    .mobile-step-badge {
+      display: inline-flex !important;
+      align-items: center;
+      height: 28px;
+      padding: 0 10px;
+      margin-bottom: 16px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      background: rgba(175, 171, 79, 0.08);
+      border: 1px solid rgba(175, 171, 79, 0.4);
+      border-radius: 4px;
+    }
+  }
+
+  /* ── prefers-reduced-motion: suppress CSS transitions ── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* ── Process overview grid ── */
+  .process-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 767px) {
+    .process-overview-grid {
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .process-overview-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .why-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .about-diff-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+
+  /* ── Principle card cursor spotlight ── */
+  .principle-col {
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+    background: radial-gradient(
+      300px circle at var(--mouse-x) var(--mouse-y),
+      rgba(0,115,185,0.06) 0%,
+      transparent 80%
+    ), var(--color-surface-1);
+  }
+
+  /* ── Hero geometric shapes — desktop only ── */
+  .hero-geo-shape { display: none; }
+  @media (min-width: 768px) {
+    .hero-geo-shape { display: block; }
+  }
+
+  /* ── Premium marquee strip ── */
+  .strip-track {
+    flex-wrap: nowrap;
+    width: max-content;
+  }
+  .strip-fade-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+  .strip-fade-wrap::before,
+  .strip-fade-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .strip-fade-wrap::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-void) 0%, transparent 100%);
+  }
+  .strip-fade-wrap::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-void) 0%, transparent 100%);
+  }
+  .strip-clone {
+    display: contents;
+  }
+  .strip-item {
+    padding-left: 48px;
+  }
+  @media (max-width: 767px) {
+    .strip-item {
+      padding-left: 28px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .strip-track {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 16px;
+    }
+    .strip-clone {
+      display: none;
+    }
+  }
+
+  /* ── CTA Banner responsive ── */
+  .cta-circle-shape { display: none; }
+  @media (min-width: 768px) {
+    .cta-circle-shape { display: block; }
+  }
+
+  /* Watermark text — full-bleed masthead sizing */
+  .cta-watermark-text {
+    font-size: 16vw;
+    white-space: nowrap;
+  }
+  @media (max-width: 767px) {
+    .cta-watermark-text {
+      font-size: 22vw;
+      white-space: normal;
+    }
+  }
+
+  /* Torch layer — hide on touch devices (no cursor) */
+  @media (hover: none) {
+    .atomeric-torch { display: none; }
+  }
+
+  /* Mobile step badge — hidden by default (desktop), shown inside mobile block */
+  .mobile-step-badge { display: none; }
+
+  /* Service card hover */
+  .service-card {
+    transition: border-color 240ms ease;
+  }
+  .service-card:hover {
+    border-color: rgba(0,115,185,0.3) !important;
+    background: var(--color-surface-2) !important;
+  }
+}
+
+/* ── Hero scroll pulse indicator ── */
+.scroll-pulse-line {
+  width: 1px;
+  height: 44px;
+  background: linear-gradient(to bottom, var(--color-teal), transparent);
+  animation: scrollPulse 2.2s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+  transform-origin: top;
+}
+
+@keyframes scrollPulse {
+  0%   { transform: scaleY(0.3); opacity: 0.3; }
+  50%  { transform: scaleY(1);   opacity: 1; }
+  100% { transform: scaleY(0.3); opacity: 0.3; }
+}
+
+/* ── Service card hover — teal glow ── */
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: radial-gradient(ellipse at top left, rgba(0,115,185,0.05) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+}
+.service-card:hover::before { opacity: 1; }
+
+/* ── Process section sticky layout ── */
+@media (max-width: 767px) {
+  .process-sticky-grid {
+    display: block !important;
+  }
+  .process-sticky-grid > div:first-child {
+    position: static !important;
+    margin-bottom: 48px;
+  }
+}
+

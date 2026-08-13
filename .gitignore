@@ -3,6 +3,11 @@
 *.docx
 *.md
 
+# Local dev/scratch HTML files — not part of the website
+index.html
+WEBSITE-GUIDE.html
+font-picker.html
+
 # Claude Code settings
 .claude/
 skills-guide.html
