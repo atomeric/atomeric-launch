@@ -132,15 +132,8 @@ export default function BlogPage() {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
+            className="blog-card"
             style={S.card}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'var(--color-teal-border)'
-              e.currentTarget.style.boxShadow = '0 4px 24px rgba(0,115,185,0.08)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = 'var(--color-border-subtle)'
-              e.currentTarget.style.boxShadow = 'none'
-            }}
           >
             {/* Category */}
             <span

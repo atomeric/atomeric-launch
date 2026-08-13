@@ -225,6 +225,11 @@
   .btn-primary:active { transform: scale(0.97); }
   .cta-button { opacity: 1; }
 
+  .blog-card:hover {
+    border-color: var(--color-teal-border) !important;
+    box-shadow: 0 4px 24px rgba(0,115,185,0.08);
+  }
+
   .btn-ghost {
     background: transparent;
     color: var(--color-text-2);
