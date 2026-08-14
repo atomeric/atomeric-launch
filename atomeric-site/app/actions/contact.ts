@@ -63,9 +63,9 @@ export async function sendContactEmail(
     const resend = new Resend(process.env.RESEND_API_KEY)
     await resend.emails.send({
       from: 'Atomeric <noreply@atomeric.com>',
-      to: 'atomeric14@gmail.com',
+      to: process.env.CONTACT_TO_EMAIL ?? 'atomeric14@gmail.com',
       replyTo: email,
-      subject: `New strategy call request from ${sName}${sCompany ? ` — ${sCompany}` : ''}`,
+      subject: `New strategy call request from ${name}${company ? ` — ${company}` : ''}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:32px;background:#060C18;color:#E8F0FA;border-radius:8px;">
           <h2 style="color:#0DBFAD;margin:0 0 24px;font-size:20px;letter-spacing:-0.5px;">New Contact Form Submission</h2>
@@ -86,6 +86,6 @@ export async function sendContactEmail(
     return { success: true }
   } catch (err) {
     console.error('Resend error:', err)
-    return { success: false, error: 'Failed to send — please email us directly at connect@atomeric.com.' }
+    return { success: false, error: `Failed to send — please email us directly at ${process.env.CONTACT_TO_EMAIL ?? 'connect@atomeric.com'}.` }
   }
 }
