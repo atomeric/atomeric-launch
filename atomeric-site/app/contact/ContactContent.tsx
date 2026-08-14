@@ -130,7 +130,9 @@ export function ContactContent() {
   const inputBase: React.CSSProperties = {
     width: '100%',
     background: 'var(--color-surface-1)',
-    border: '1px solid rgba(255,255,255,0.1)',
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: 'rgba(255,255,255,0.1)',
     borderRadius: '8px',
     padding: '12px 14px',
     fontFamily: 'var(--font-body)',

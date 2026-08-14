@@ -17,8 +17,8 @@ export async function sendContactEmail(
 
   try {
     await resend.emails.send({
-      from: 'Atomeric <onboarding@resend.dev>',
-      to: 'connect@atomeric.com',
+      from: 'Atomeric <noreply@atomeric.com>',
+      to: 'atomeric14@gmail.com',
       replyTo: email,
       subject: `New strategy call request from ${name}${company ? ` — ${company}` : ''}`,
       html: `

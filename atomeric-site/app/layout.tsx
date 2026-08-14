@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, DM_Sans, JetBrains_Mono, Syne } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import { Providers } from '@/components/providers'
 import { LoadingScreen } from '@/components/layout/LoadingScreen'
@@ -112,6 +113,12 @@ const jsonLd = {
         'AI-native growth studio that builds revenue systems for ambitious brands through Strategy, Build, Grow, and Transform service tracks.',
       email: 'connect@atomeric.com',
       foundingDate: '2024',
+      areaServed: 'India',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Kolkata',
+        addressCountry: 'IN',
+      },
       knowsAbout: [
         'AI Marketing',
         'Generative Engine Optimization',
@@ -157,6 +164,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <Footer />
         </Providers>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-ED95BNYH29"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ED95BNYH29');`}
+        </Script>
       </body>
     </html>
   )
