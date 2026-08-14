@@ -2,24 +2,24 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: "GEO vs SEO: What's the Difference and Why Both Matter in 2025",
+  title: "GEO vs SEO: What's the Difference and Why Both Matter in 2026",
   description:
     'Traditional SEO gets you found on Google. Generative Engine Optimization gets you cited by AI engines like ChatGPT and Perplexity. Here is why ambitious brands need both — and how to start.',
   keywords: [
     'GEO', 'SEO', 'generative engine optimization', 'AI search optimization',
     'AI marketing', 'GEO vs SEO', 'AI-native marketing',
   ],
-  authors: [{ name: 'Atomeric', url: 'https://atomeric.com' }],
+  authors: [{ name: 'Gautam', url: 'https://atomeric.com/about' }],
   openGraph: {
     type: 'article',
     url: 'https://atomeric.com/blog/geo-vs-seo',
-    title: "GEO vs SEO: What's the Difference and Why Both Matter in 2025",
+    title: "GEO vs SEO: What's the Difference and Why Both Matter in 2026",
     description:
       'Traditional SEO gets you found on Google. GEO gets you cited by AI engines. Here is the full breakdown.',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
     publishedTime: '2025-08-13',
-    modifiedTime: '2025-08-13',
-    authors: ['https://atomeric.com'],
+    modifiedTime: '2026-08-14',
+    authors: ['https://atomeric.com/about'],
     tags: ['GEO', 'SEO', 'AI Marketing', 'Generative Engine Optimization'],
   },
   alternates: { canonical: 'https://atomeric.com/blog/geo-vs-seo' },
@@ -29,12 +29,17 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   '@id': 'https://atomeric.com/blog/geo-vs-seo',
-  headline: 'GEO vs SEO: What Is the Difference and Why Both Matter in 2025',
+  headline: 'GEO vs SEO: What Is the Difference and Why Both Matter in 2026',
   description:
     'Traditional SEO gets you found on Google. Generative Engine Optimization gets you cited by AI engines like ChatGPT and Perplexity. Here is why ambitious brands need both.',
   datePublished: '2025-08-13',
-  dateModified: '2025-08-13',
-  author: { '@type': 'Organization', '@id': 'https://atomeric.com/#organization' },
+  dateModified: '2026-08-14',
+  author: {
+    '@type': 'Person',
+    name: 'Gautam',
+    url: 'https://atomeric.com/about',
+    worksFor: { '@id': 'https://atomeric.com/#organization' },
+  },
   publisher: { '@id': 'https://atomeric.com/#organization' },
   url: 'https://atomeric.com/blog/geo-vs-seo',
   mainEntityOfPage: { '@type': 'WebPage', '@id': 'https://atomeric.com/blog/geo-vs-seo' },
@@ -183,7 +188,7 @@ export default function GeoVsSeoPage() {
               marginBottom: '28px',
             }}
           >
-            GEO vs SEO: What&apos;s the Difference and Why Both Matter in 2025
+            GEO vs SEO: What&apos;s the Difference and Why Both Matter in 2026
           </h1>
 
           {/* Meta row */}
@@ -205,7 +210,7 @@ export default function GeoVsSeoPage() {
               By <strong style={{ color: 'var(--color-text-2)', fontWeight: 500 }}>Atomeric</strong>
             </span>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--color-text-3)', letterSpacing: '0.05em' }}>
-              August 13, 2025
+              Aug 13, 2025 · Updated Aug 14, 2026
             </span>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--color-text-3)', letterSpacing: '0.05em' }}>
               7 min read

@@ -1,0 +1,37 @@
+# Atomeric
+
+> Atomeric is an AI-native growth studio based in Kolkata, India.
+> We build AI-powered revenue systems for ambitious brands through
+> four service tracks: Strategy, Build, Grow, and Transform.
+
+## What We Do
+
+- Generative Engine Optimization (GEO) — getting brands cited by ChatGPT, Perplexity, and Google AI
+- AI content strategy and digital marketing
+- Website design and web development for startups and B2B brands
+- Lead generation systems powered by AI
+- Brand strategy and go-to-market planning
+
+## Who We Serve
+
+Indian startups, SaaS companies, D2C brands, and B2B businesses that want
+to grow faster using AI-first strategies.
+
+## Key Pages
+
+- [Homepage](https://atomeric.com)
+- [Services](https://atomeric.com/services)
+- [Process](https://atomeric.com/process)
+- [Blog](https://atomeric.com/blog)
+- [About](https://atomeric.com/about)
+- [Contact](https://atomeric.com/contact)
+
+## Blog
+
+- [GEO vs SEO: What's the Difference and Why Both Matter](https://atomeric.com/blog/geo-vs-seo)
+
+## Contact
+
+- Email: connect@atomeric.com
+- Location: Kolkata, India
+- Website: https://atomeric.com

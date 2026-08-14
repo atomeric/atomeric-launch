@@ -40,6 +40,51 @@ const jsonLd = {
         { '@type': 'HowToStep', position: 5, name: 'Measure & Scale', text: 'Track pipeline and conversions. Double down on what works, cut what does not.' },
       ],
     },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'How long does the Atomeric process take from start to launch?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Most engagements run 4–8 weeks from kick-off to launch. Strategy and discovery typically take 1 week. Build and launch take 2–4 weeks depending on scope. Ongoing Grow and Transform work begins immediately after launch.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What happens in the Discover phase?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Discover is a deep audit of your market, competitors, ideal customer profile (ICP), and current positioning. We identify gaps, opportunities, and the fastest path to revenue before a single asset is created.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Do I need to be involved in every step of the process?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'No. We keep your involvement lean — typically two 30-minute check-ins per week. We handle the execution; you handle the decisions. Most founders spend 2–3 hours per week total during the engagement.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What deliverables do I get at the end of the Strategize phase?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'You receive a complete growth playbook: brand positioning document, ICP definition, channel strategy, content pillar map, GEO keyword targets, and a prioritised 90-day execution roadmap.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How does Atomeric measure success?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'We track pipeline-level metrics — qualified leads, conversion rates, and revenue attribution — not just traffic or impressions. Every engagement has defined KPIs agreed before work begins.',
+          },
+        },
+      ],
+    },
   ],
 }
 
