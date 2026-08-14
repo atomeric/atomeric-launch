@@ -253,7 +253,7 @@ export function AboutContent() {
               maxWidth: '580px',
             }}
           >
-            Atomeric is an AI-native growth studio that builds revenue engines for ambitious brands — strategy, systems, and growth that compound over time.
+            Atomeric is an AI-native growth studio based in Kolkata, India that builds revenue engines for ambitious brands — strategy, systems, and growth that compound over time.
           </p>
         </div>
       </section>

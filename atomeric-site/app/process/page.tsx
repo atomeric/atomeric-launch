@@ -4,7 +4,7 @@ import { ProcessContent } from './ProcessContent'
 export const metadata: Metadata = {
   title: 'Our Process — 5-Step Revenue Methodology',
   description:
-    "Atomeric's 5-step methodology: Discover, Strategize, Build, Launch, Scale. From brief to compounding revenue — no guesswork, no bloated timelines.",
+    "Atomeric's 5-step AI growth methodology — Discover, Strategize, Build, Launch, Scale. From brief to compounding revenue for Indian startups. No guesswork.",
   alternates: { canonical: 'https://atomeric.com/process' },
 }
 

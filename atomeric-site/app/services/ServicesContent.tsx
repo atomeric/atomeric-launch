@@ -319,7 +319,8 @@ export function ServicesContent() {
             }}
           >
             From first brief to compound growth — we cover every layer of the modern digital
-            stack. AI-native execution across strategy, build, growth, and transformation.
+            stack. AI-native execution for Indian startups and B2B brands across strategy, build,
+            growth, and transformation.
           </p>
         </div>
       </section>

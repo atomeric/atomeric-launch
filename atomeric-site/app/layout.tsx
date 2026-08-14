@@ -40,19 +40,19 @@ const syne = Syne({
 export const metadata: Metadata = {
   metadataBase: new URL('https://atomeric.com'),
   title: {
-    default: 'Atomeric — AI-Native Growth Studio for Ambitious Brands',
+    default: 'Atomeric — AI Growth Studio India | GEO & Marketing',
     template: '%s | Atomeric',
   },
   description:
-    'Atomeric builds AI-powered systems that generate leads, conversions, and compound growth for ambitious brands. Strategy · Build · Grow · Transform',
+    'Atomeric is an AI-native growth studio in India. We build GEO strategies, AI marketing systems, and lead generation for ambitious Indian startups and B2B brands.',
   keywords: [
-    'AI growth studio',
-    'growth studio',
-    'AI marketing',
-    'GEO optimization',
+    'AI growth studio India',
+    'GEO optimization India',
     'generative engine optimization',
+    'AI marketing India',
+    'Indian startup marketing',
+    'B2B lead generation India',
     'AI-native studio',
-    'lead generation',
   ],
   authors: [{ name: 'Atomeric', url: 'https://atomeric.com' }],
   creator: 'Atomeric',
@@ -73,23 +73,23 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://atomeric.com',
     siteName: 'Atomeric',
-    title: 'Atomeric — AI-Native Growth Studio for Ambitious Brands',
+    title: 'Atomeric — AI Growth Studio India | GEO & Marketing',
     description:
-      'We build AI-powered digital systems that generate leads, conversions, and compound growth for ambitious brands.',
+      'AI-native growth studio in India. We build GEO strategies, AI marketing systems, and lead generation for ambitious Indian startups and B2B brands.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Atomeric — AI-Native Growth Studio',
+        alt: 'Atomeric — AI Growth Studio India',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Atomeric — AI-Native Growth Studio for Ambitious Brands',
+    title: 'Atomeric — AI Growth Studio India | GEO & Marketing',
     description:
-      'We build AI-powered digital systems that generate leads, conversions, and compound growth for ambitious brands.',
+      'AI-native growth studio in India. We build GEO strategies, AI marketing systems, and lead generation for ambitious Indian startups and B2B brands.',
     images: ['/og-image.jpg'],
   },
   alternates: { canonical: 'https://atomeric.com' },

@@ -450,6 +450,11 @@ export default function GeoVsSeoPage() {
             channels feeding the same compounding growth engine.
           </p>
           <p style={T.body}>
+            For Indian startups and B2B brands especially, GEO authority is largely underclaimed —
+            most markets are still early enough that the citation gaps AI engines have are closeable
+            with the right strategy.
+          </p>
+          <p style={T.body}>
             The practical starting point is not a complete strategy overhaul. It is adding structure
             to content you are already creating, building entity clarity into your existing site, and
             starting to earn the external citations that give AI engines a reason to trust what you

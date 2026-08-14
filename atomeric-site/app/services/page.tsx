@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { ServicesContent } from './ServicesContent'
 
 export const metadata: Metadata = {
-  title: 'Services — Strategy, Build, Grow & Transform',
+  title: 'AI Marketing Services India — GEO & Growth | Atomeric',
   description:
-    'Four growth tracks — Strategy, Build, Grow, and Transform — with AI-powered execution, 48hr turnaround, and GEO-first visibility for ambitious brands.',
+    'AI-native marketing services for Indian startups — GEO optimization, growth strategy, web development, and B2B lead generation. Onboarding in 48hrs.',
   alternates: { canonical: 'https://atomeric.com/services' },
 }
 

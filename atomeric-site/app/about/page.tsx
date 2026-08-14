@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { AboutContent } from './AboutContent'
 
 export const metadata: Metadata = {
-  title: 'About Atomeric — Revenue-Driven Growth Studio',
+  title: 'About Atomeric — AI Growth Studio, Kolkata India',
   description:
-    'Atomeric is a revenue-driven growth studio. We build AI-powered systems for ambitious brands — focused on measurable outcomes, not vanity metrics.',
+    'Atomeric is an AI-native growth studio founded in Kolkata, India. We help ambitious brands grow with GEO, AI marketing, and lead generation systems.',
   alternates: { canonical: 'https://atomeric.com/about' },
 }
 

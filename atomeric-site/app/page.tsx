@@ -568,7 +568,7 @@ export default function Home() {
           <div className="hero-logo-wrap" style={{ marginBottom: '44px' }}>
             <h1
               className="hero-logo-big"
-              aria-label="Atomeric — AI-Native Growth Studio for Ambitious Brands"
+              aria-label="Atomeric — AI Growth Studio India"
               style={{
                 fontFamily: 'var(--font-syne)',
                 fontWeight: 600,
@@ -636,7 +636,7 @@ export default function Home() {
                   margin: '0 auto 44px',
                 }}
               >
-                Most brands struggle to get noticed by the buyers that matter. We change that with sharper positioning, faster execution, and growth systems powered by machine intelligence — built to compound.
+                Most brands struggle to get noticed by the buyers that matter. We change that with sharper positioning, faster execution, and generative engine optimization — growth systems built to compound.
               </p>
 
               <div
