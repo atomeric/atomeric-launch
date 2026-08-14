@@ -34,9 +34,90 @@ const jsonLd = {
 
 const POSTS = [
   {
+    slug: 'how-to-rank-in-google-ai-overviews',
+    category: 'GEO',
+    title: 'How to Get Featured in Google AI Overviews',
+    description:
+      'Google AI Overviews appear in 45% of all searches. Proven strategies to get your Indian B2B brand cited inside AI Overviews — with data and research.',
+    date: 'August 14, 2026',
+    readTime: '11 min read',
+  },
+  {
+    slug: 'what-is-generative-engine-optimization',
+    category: 'GEO',
+    title: 'What is Generative Engine Optimization (GEO)?',
+    description:
+      'GEO gets your brand cited by ChatGPT, Perplexity, and Google AI Overviews. The complete guide for Indian B2B brands — definitions, research, and 5 practical steps to start.',
+    date: 'August 14, 2026',
+    readTime: '11 min read',
+  },
+  {
+    slug: 'how-to-get-cited-by-chatgpt-perplexity',
+    category: 'GEO',
+    title: 'How to Get Cited by ChatGPT & Perplexity',
+    description:
+      'Six proven steps to get your brand cited by ChatGPT, Perplexity, and Google AI Overviews — based on the Princeton KDD 2024 GEO study and practical implementation.',
+    date: 'August 14, 2026',
+    readTime: '11 min read',
+  },
+  {
+    slug: 'aeo-vs-geo-vs-seo',
+    category: 'AEO',
+    title: 'AEO vs GEO vs SEO: Key Differences Explained',
+    description:
+      'Confused by AEO, GEO, and SEO? The full breakdown of how they differ, which matters most for Indian B2B brands, and how to run all three at once without tripling your workload.',
+    date: 'August 14, 2026',
+    readTime: '11 min read',
+  },
+  {
+    slug: 'what-is-llms-txt',
+    category: 'GEO',
+    title: 'What is llms.txt? Why Your Site Needs It',
+    description:
+      'llms.txt tells AI engines what your website does, who you serve, and which pages matter. The complete guide to creating one — plus what to include and how to validate it.',
+    date: 'August 14, 2026',
+    readTime: '10 min read',
+  },
+  {
+    slug: 'what-is-ai-native-marketing',
+    category: 'AI Marketing',
+    title: 'What Is AI-Native Marketing? Complete Guide for B2B Leaders',
+    description:
+      "AI-native marketing isn't using ChatGPT to write blog posts. It's rebuilding how your company acquires, nurtures, and converts customers — with AI embedded at every stage.",
+    date: 'August 14, 2026',
+    readTime: '8 min read',
+  },
+  {
+    slug: 'ai-marketing-for-it-services',
+    category: 'B2B',
+    title: 'AI-Powered Marketing for IT Services Companies: Win More Enterprise Contracts',
+    description:
+      'IT services companies face undifferentiated positioning, long sales cycles, and complex buying committees. Here is how AI-native marketing solves all three and drives measurable pipeline.',
+    date: 'August 14, 2026',
+    readTime: '9 min read',
+  },
+  {
+    slug: 'b2b-content-strategy-ai-era',
+    category: 'Strategy',
+    title: 'B2B Content Strategy in the AI Era: Rank on Google and Get Cited by ChatGPT',
+    description:
+      'Most B2B content strategies optimize for one channel. In 2026 you need two: Google search and AI-generated answers. Here is the framework that wins both simultaneously.',
+    date: 'August 14, 2026',
+    readTime: '9 min read',
+  },
+  {
+    slug: 'what-is-aeo',
+    category: 'AEO',
+    title: 'What Is Answer Engine Optimization (AEO)? Complete Guide 2026',
+    description:
+      'Answer Engine Optimization (AEO) gets your brand cited inside AI-generated answers from ChatGPT, Perplexity, and Google AI Overviews. Here is exactly how it works and how to build it.',
+    date: 'August 14, 2026',
+    readTime: '8 min read',
+  },
+  {
     slug: 'geo-vs-seo',
     category: 'GEO',
-    title: "GEO vs SEO: What's the Difference and Why Both Matter in 2025",
+    title: "GEO vs SEO: What's the Difference and Why Both Matter in 2026",
     description:
       'Traditional SEO gets you found on Google. Generative Engine Optimization gets you cited by AI engines like ChatGPT and Perplexity. Here is why ambitious brands need both — and how to start.',
     date: 'August 13, 2025',
