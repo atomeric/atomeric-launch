@@ -3,23 +3,14 @@
 import { Resend } from 'resend'
 import { headers } from 'next/headers'
 import { contactSchema, type ContactFormValues } from '@/app/contact/schema'
+import { Ratelimit } from '@upstash/ratelimit'
+import { Redis } from '@upstash/redis'
 
-// IP-based rate limiting: max 5 requests per IP per 10 minutes
-const rateLimit = new Map<string, { count: number; resetAt: number }>()
-const RATE_LIMIT_MAX = 5
-const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000
-
-function checkRateLimit(ip: string): boolean {
-  const now = Date.now()
-  const entry = rateLimit.get(ip)
-  if (!entry || now > entry.resetAt) {
-    rateLimit.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS })
-    return true
-  }
-  if (entry.count >= RATE_LIMIT_MAX) return false
-  entry.count++
-  return true
-}
+const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(5, '10 m'),
+  analytics: true,
+})
 
 function sanitize(str: string): string {
   return str
@@ -41,9 +32,8 @@ export async function sendContactEmail(
   const headersList = await headers()
   const ip = headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
 
-  if (!checkRateLimit(ip)) {
-    return { success: false, error: 'Too many requests. Please wait a few minutes before trying again.' }
-  }
+  const { success } = await ratelimit.limit(ip)
+  if (!success) return { success: false, error: 'Too many requests. Please wait a few minutes.' }
 
   const parsed = contactSchema.safeParse(data)
   if (!parsed.success) {
