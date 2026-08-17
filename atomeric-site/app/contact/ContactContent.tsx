@@ -207,8 +207,8 @@ export function ContactContent() {
         }}
       >
         <div className="blueprint-grid" style={{ position: 'absolute', inset: 0, zIndex: 0 }} />
-        <div style={{ position: 'absolute', top: 40, left: 'clamp(20px,5vw,80px)', width: 32, height: 32, borderTop: '1px solid rgba(0,115,185,0.2)', borderLeft: '1px solid rgba(0,115,185,0.2)' }} />
-        <div style={{ position: 'absolute', bottom: 40, right: 'clamp(20px,5vw,80px)', width: 32, height: 32, borderBottom: '1px solid rgba(0,115,185,0.2)', borderRight: '1px solid rgba(0,115,185,0.2)' }} />
+        <div style={{ position: 'absolute', top: 40, left: 'clamp(20px,5vw,80px)', width: 32, height: 32, borderTop: '1px solid var(--color-border-teal)', borderLeft: '1px solid var(--color-border-teal)' }} />
+        <div style={{ position: 'absolute', bottom: 40, right: 'clamp(20px,5vw,80px)', width: 32, height: 32, borderBottom: '1px solid var(--color-border-teal)', borderRight: '1px solid var(--color-border-teal)' }} />
 
         <div className="contact-hero-content" style={{ position: 'relative', zIndex: 1, maxWidth: '680px' }}>
           <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.18em', color: 'var(--color-teal)', textTransform: 'uppercase', display: 'block', marginBottom: '24px' }}>
@@ -250,8 +250,8 @@ export function ContactContent() {
               <div
                 role="alert"
                 style={{
-                  background: 'rgba(0,115,185,0.06)',
-                  border: '1px solid rgba(0,115,185,0.2)',
+                  background: 'var(--color-accent-muted)',
+                  border: '1px solid var(--color-accent-border)',
                   borderRadius: '12px',
                   padding: '40px 32px',
                   display: 'flex',
@@ -262,9 +262,9 @@ export function ContactContent() {
                 }}
               >
                 {/* Teal checkmark */}
-                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                  <circle cx="24" cy="24" r="23" stroke="#0073b9" strokeWidth="1.5" />
-                  <path d="M15 24.5L21 30.5L33 18" stroke="#0073b9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true" style={{ color: 'var(--color-teal)' }}>
+                  <circle cx="24" cy="24" r="23" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M15 24.5L21 30.5L33 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <p style={{ fontFamily: 'var(--font-display)', fontSize: '22px', fontWeight: 700, color: 'var(--color-text-1)', margin: 0, letterSpacing: '-0.5px' }}>
                   Message received.

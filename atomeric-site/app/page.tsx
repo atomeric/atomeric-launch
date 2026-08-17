@@ -714,8 +714,8 @@ export default function Home() {
         className="strip-fade-wrap"
         style={{
           background: 'var(--color-surface-1)',
-          borderTop: '1px solid rgba(0,115,185,0.1)',
-          borderBottom: '1px solid rgba(0,115,185,0.1)',
+          borderTop: '1px solid var(--color-teal-dim)',
+          borderBottom: '1px solid var(--color-teal-dim)',
           padding: '14px 0',
           overflow: 'hidden',
         }}
@@ -737,7 +737,7 @@ export default function Home() {
               >
                 {item.text}
               </span>
-              <span aria-hidden="true" style={{ color: 'rgba(0,115,185,0.25)', fontSize: '9px', paddingLeft: '20px' }}>✦</span>
+              <span aria-hidden="true" style={{ color: 'var(--color-border-teal)', fontSize: '9px', paddingLeft: '20px' }}>✦</span>
             </span>
           ))}
           {/* Cloned set — hidden from screen readers, hidden in reduced motion */}
@@ -757,7 +757,7 @@ export default function Home() {
                 >
                   {item.text}
                 </span>
-                <span aria-hidden="true" style={{ color: 'rgba(0,115,185,0.25)', fontSize: '9px', paddingLeft: '20px' }}>✦</span>
+                <span aria-hidden="true" style={{ color: 'var(--color-border-teal)', fontSize: '9px', paddingLeft: '20px' }}>✦</span>
               </span>
             ))}
           </span>
@@ -835,7 +835,7 @@ export default function Home() {
               className="section-header-el"
               style={{
                 background: 'var(--color-surface-1)',
-                border: '1px solid rgba(0,115,185,0.15)',
+                border: '1px solid var(--color-border-subtle)',
                 borderTop: '2px solid var(--color-teal)',
                 borderRadius: '12px',
                 padding: '32px 28px',
@@ -903,7 +903,7 @@ export default function Home() {
                   position: 'relative',
                   background: 'var(--color-surface-1)',
                   border: '1px solid var(--color-border-subtle)',
-                  borderTop: (s.num === '01' || s.num === '04') ? '2px solid var(--color-gold)' : '2px solid rgba(0,115,185,0.28)',
+                  borderTop: (s.num === '01' || s.num === '04') ? '2px solid var(--color-gold)' : '2px solid var(--color-teal-border)',
                   borderRadius: '12px',
                   padding: '36px 32px 32px',
                   overflow: 'hidden',
@@ -933,8 +933,8 @@ export default function Home() {
                     letterSpacing: '0.16em',
                     textTransform: 'uppercase',
                     color: 'var(--color-teal)',
-                    background: 'rgba(0,115,185,0.08)',
-                    border: '1px solid rgba(0,115,185,0.18)',
+                    background: 'var(--color-accent-muted)',
+                    border: '1px solid var(--color-border-teal)',
                     borderRadius: '4px',
                     padding: '4px 10px',
                     marginBottom: '20px',
@@ -1112,7 +1112,7 @@ export default function Home() {
                         height: '40px',
                         borderRadius: '50%',
                         background: 'var(--color-surface-2)',
-                        border: '1px solid rgba(0,115,185,0.3)',
+                        border: '1px solid var(--color-teal-border)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -1222,7 +1222,7 @@ export default function Home() {
                   style={{
                     fontFamily: 'var(--font-mono)',
                     fontSize: '10px',
-                    color: 'rgba(0,115,185,0.4)',
+                    color: 'var(--color-border-teal)',
                     letterSpacing: '0.1em',
                     marginBottom: '20px',
                   }}

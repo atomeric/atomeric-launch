@@ -233,9 +233,9 @@ export function ServicesContent() {
               style={{
                 display: 'block',
                 padding: '12px 14px',
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                borderLeft: '2px solid #0DBFAD',
+                background: 'var(--color-card-glass-bg)',
+                border: '1px solid var(--color-card-glass-border)',
+                borderLeft: '2px solid var(--color-teal)',
                 borderRadius: '8px',
                 textDecoration: 'none',
                 cursor: 'pointer',
@@ -245,27 +245,27 @@ export function ServicesContent() {
                 WebkitBackdropFilter: 'blur(8px)',
               }}
               onMouseEnter={(e) => {
-                ;(e.currentTarget as HTMLElement).style.background = 'rgba(13,191,173,0.08)'
+                ;(e.currentTarget as HTMLElement).style.background = 'var(--color-accent-muted)'
               }}
               onMouseLeave={(e) => {
-                ;(e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.04)'
+                ;(e.currentTarget as HTMLElement).style.background = 'var(--color-card-glass-bg)'
               }}
             >
               {/* Number + name row */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', color: '#C9A84C', letterSpacing: '0.12em' }}>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', color: 'var(--color-gold)', letterSpacing: '0.12em' }}>
                   {item.num}
                 </span>
-                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'rgba(255,255,255,0.85)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--color-text-1)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
                   {item.name}
                 </span>
               </div>
               {/* Stat row */}
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
-                <span style={{ fontFamily: 'var(--font-syne)', fontSize: '18px', fontWeight: 600, color: '#0DBFAD', letterSpacing: '-0.5px', lineHeight: 1 }}>
+                <span style={{ fontFamily: 'var(--font-syne)', fontSize: '18px', fontWeight: 600, color: 'var(--color-teal)', letterSpacing: '-0.5px', lineHeight: 1 }}>
                   {item.stat}
                 </span>
-                <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'rgba(255,255,255,0.4)', lineHeight: 1.4, whiteSpace: 'nowrap' }}>
+                <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'var(--color-text-3)', lineHeight: 1.4, whiteSpace: 'nowrap' }}>
                   {item.desc}
                 </span>
               </div>
@@ -382,7 +382,7 @@ export function ServicesContent() {
                   <div
                     style={{
                       height: '1px',
-                      background: 'rgba(175,171,79,0.2)',
+                      background: 'var(--color-gold-glow)',
                       margin: '0 clamp(20px, 5vw, 80px)',
                     }}
                   />
@@ -420,8 +420,8 @@ export function ServicesContent() {
                           color: 'var(--color-teal)',
                           letterSpacing: '0.15em',
                           textTransform: 'uppercase',
-                          background: 'rgba(0,115,185,0.08)',
-                          border: '1px solid rgba(0,115,185,0.2)',
+                          background: 'var(--color-accent-muted)',
+                          border: '1px solid var(--color-accent-border)',
                           borderRadius: '100px',
                           padding: '4px 10px',
                         }}

@@ -367,7 +367,7 @@ export function ProcessContent() {
                   <div
                     style={{
                       height: '1px',
-                      background: 'rgba(201,168,76,0.18)',
+                      background: 'var(--color-gold-subtle)',
                       margin: '0 clamp(20px, 5vw, 80px)',
                     }}
                   />
@@ -454,8 +454,8 @@ export function ProcessContent() {
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '8px',
-                        background: 'rgba(0,115,185,0.08)',
-                        border: '1px solid rgba(0,115,185,0.2)',
+                        background: 'var(--color-accent-muted)',
+                        border: '1px solid var(--color-accent-border)',
                         borderRadius: '6px',
                         padding: '6px 14px',
                       }}

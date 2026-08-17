@@ -73,7 +73,7 @@ export function FloatingCTA() {
         gap: '8px',
         opacity: 0,
         textDecoration: 'none',
-        boxShadow: '0 4px 20px rgba(0,115,185,0.22)',
+        boxShadow: '0 4px 20px var(--color-accent-border)',
         whiteSpace: 'nowrap',
       }}
     >

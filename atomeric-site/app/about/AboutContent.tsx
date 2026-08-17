@@ -212,8 +212,8 @@ export function AboutContent() {
             left: 'clamp(20px, 5vw, 80px)',
             width: 32,
             height: 32,
-            borderTop: '1px solid rgba(0,115,185,0.2)',
-            borderLeft: '1px solid rgba(0,115,185,0.2)',
+            borderTop: '1px solid var(--color-border-teal)',
+            borderLeft: '1px solid var(--color-border-teal)',
           }}
         />
         <div
@@ -223,8 +223,8 @@ export function AboutContent() {
             right: 'clamp(20px, 5vw, 80px)',
             width: 32,
             height: 32,
-            borderBottom: '1px solid rgba(0,115,185,0.2)',
-            borderRight: '1px solid rgba(0,115,185,0.2)',
+            borderBottom: '1px solid var(--color-border-teal)',
+            borderRight: '1px solid var(--color-border-teal)',
           }}
         />
 
@@ -409,7 +409,7 @@ export function AboutContent() {
               style={{
                 width: '1px',
                 height: '80px',
-                background: 'rgba(0,115,185,0.15)',
+                background: 'var(--color-border-subtle)',
                 marginTop: '32px',
               }}
             />

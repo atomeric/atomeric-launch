@@ -121,10 +121,10 @@ export function Navigation() {
           right: 0,
           zIndex: 50,
           height: '64px',
-          background: 'rgba(6,12,24,0.92)',
+          background: 'var(--color-nav-bg-scroll)',
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(0,115,185,0.15)',
+          borderBottom: '1px solid var(--color-nav-border)',
           display: 'flex',
           alignItems: 'center',
           paddingLeft: 'clamp(20px, 5vw, 80px)',
@@ -140,8 +140,8 @@ export function Navigation() {
           onClick={handleLinkClick}
         >
           <span style={{ fontFamily: 'var(--font-syne)', fontWeight: 600, fontSize: '22px', letterSpacing: '-1.5px' }}>
-            <span style={{ color: 'rgba(255,255,255,0.9)' }}>atom</span>
-            <span style={{ color: '#0DBFAD' }}>eric</span>
+            <span style={{ color: 'var(--color-nav-text-hover)' }}>atom</span>
+            <span style={{ color: 'var(--color-teal)' }}>eric</span>
           </span>
         </Link>
 
@@ -198,7 +198,7 @@ export function Navigation() {
         <Link href="/contact" className="btn-primary" style={{ fontSize: '16px', padding: '14px 32px', marginTop: '8px' }} onClick={handleLinkClick}>
           Get a Free Audit
         </Link>
-        <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'rgba(255,255,255,0.4)', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: '24px' }}>
+        <p style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--color-text-3)', letterSpacing: '0.12em', textTransform: 'uppercase', marginTop: '24px' }}>
           connect@atomeric.com
         </p>
       </div>
