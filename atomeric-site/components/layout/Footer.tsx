@@ -53,7 +53,7 @@ export function Footer() {
       aria-label="Site footer"
       style={{
         background: 'var(--color-surface-1)',
-        borderTop: '1px solid rgba(12,4,87,0.1)',
+        borderTop: '1px solid var(--color-border-subtle)',
         paddingTop: '64px',
         paddingBottom: '64px',
         paddingLeft: 'clamp(20px, 5vw, 80px)',
@@ -196,7 +196,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div
           style={{
-            borderTop: '1px solid rgba(12,4,87,0.1)',
+            borderTop: '1px solid var(--color-border-subtle)',
             paddingTop: '24px',
             display: 'flex',
             alignItems: 'center',

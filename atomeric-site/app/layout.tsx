@@ -6,6 +6,7 @@ import { Providers } from '@/components/providers'
 import { LoadingScreen } from '@/components/layout/LoadingScreen'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
+import { FloatingCTA } from '@/components/layout/FloatingCTA'
 import { ReducedMotionProvider } from '@/components/ReducedMotionProvider'
 
 const playfair = Playfair_Display({
@@ -142,8 +143,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       className={`${playfair.variable} ${dmSans.variable} ${jetbrainsMono.variable} ${syne.variable}`}
+      suppressHydrationWarning
     >
       <head>
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var s=localStorage.getItem('atomeric-theme');if(s==='dark'||s==='light'){document.documentElement.dataset.theme=s;}else if(window.matchMedia('(prefers-color-scheme: dark)').matches){document.documentElement.dataset.theme='dark';}else{document.documentElement.dataset.theme='light';}}catch(e){}})();` }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -163,6 +166,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navigation />
           {children}
           <Footer />
+          <FloatingCTA />
         </Providers>
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>

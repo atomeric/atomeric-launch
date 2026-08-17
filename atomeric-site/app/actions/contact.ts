@@ -40,7 +40,7 @@ export async function sendContactEmail(
     return { success: false, error: 'Invalid form data.' }
   }
 
-  const { name, company, email, track, budget, message } = parsed.data
+  const { name, company, email, track, budget, message, utmSource, utmMedium, utmCampaign, utmTerm, utmContent } = parsed.data
 
   const sName = sanitize(name)
   const sCompany = company ? sanitize(company) : ''
@@ -48,6 +48,11 @@ export async function sendContactEmail(
   const sTrack = sanitize(track)
   const sBudget = sanitize(budget)
   const sMessage = sanitize(message)
+  const sUtmSource   = utmSource   ? sanitize(utmSource)   : ''
+  const sUtmMedium   = utmMedium   ? sanitize(utmMedium)   : ''
+  const sUtmCampaign = utmCampaign ? sanitize(utmCampaign) : ''
+  const sUtmTerm     = utmTerm     ? sanitize(utmTerm)     : ''
+  const sUtmContent  = utmContent  ? sanitize(utmContent)  : ''
 
   try {
     const resend = new Resend(process.env.RESEND_API_KEY)
@@ -70,6 +75,20 @@ export async function sendContactEmail(
             <p style="color:#7B9CC0;font-size:13px;margin:0 0 8px;">Message</p>
             <p style="font-size:15px;line-height:1.7;margin:0;white-space:pre-wrap;">${sMessage}</p>
           </div>
+          ${sUtmSource || sUtmMedium || sUtmCampaign ? `
+          <table style="width:100%;border-collapse:collapse;margin-top:24px;">
+            <tr><td colspan="2" style="padding:16px 0 8px;color:#7B9CC0;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;border-top:1px solid rgba(255,255,255,0.07);">UTM Attribution</td></tr>
+            <tr>
+              <td style="padding:4px 0;color:#7B9CC0;font-size:13px;width:120px;">Source / Medium</td>
+              <td style="padding:4px 0;font-size:15px;">${sUtmSource||'—'} / ${sUtmMedium||'—'}</td>
+            </tr>
+            <tr>
+              <td style="padding:4px 0;color:#7B9CC0;font-size:13px;">Campaign</td>
+              <td style="padding:4px 0;font-size:15px;">${sUtmCampaign||'—'}</td>
+            </tr>
+            ${sUtmTerm ? `<tr><td style="padding:4px 0;color:#7B9CC0;font-size:13px;">Term</td><td style="padding:4px 0;font-size:15px;">${sUtmTerm}</td></tr>` : ''}
+            ${sUtmContent ? `<tr><td style="padding:4px 0;color:#7B9CC0;font-size:13px;">Content</td><td style="padding:4px 0;font-size:15px;">${sUtmContent}</td></tr>` : ''}
+          </table>` : ''}
         </div>
       `,
     })

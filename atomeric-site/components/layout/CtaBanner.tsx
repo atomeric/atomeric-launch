@@ -133,7 +133,7 @@ export function CtaBanner() {
             pointerEvents: 'none',
           }}
         >
-          <span style={{ color: 'transparent', WebkitTextStroke: '1px rgba(12,4,87,0.12)' }}>atom</span>
+          <span style={{ color: 'transparent', WebkitTextStroke: '1px rgba(0,115,185,0.15)' }}>atom</span>
           <span style={{ color: 'transparent', WebkitTextStroke: '1px rgba(0,115,185,0.14)' }}>eric</span>
         </div>
 
@@ -264,7 +264,7 @@ export function CtaBanner() {
           style={{
             fontFamily: 'var(--font-mono)',
             fontSize: '10px',
-            color: 'rgba(12,4,87,0.45)',
+            color: 'var(--color-text-3)',
             letterSpacing: '0.15em',
             textTransform: 'uppercase',
           }}

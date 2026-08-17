@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useGSAP } from '@gsap/react'
@@ -55,6 +56,15 @@ const FAQS = [
 const EASE = 'cubic-bezier(0.23, 1, 0.32, 1)'
 
 export function ContactContent() {
+  const searchParams = useSearchParams()
+  const utmRef = useRef({
+    utmSource:   searchParams.get('utm_source')   ?? '',
+    utmMedium:   searchParams.get('utm_medium')   ?? '',
+    utmCampaign: searchParams.get('utm_campaign') ?? '',
+    utmTerm:     searchParams.get('utm_term')     ?? '',
+    utmContent:  searchParams.get('utm_content')  ?? '',
+  })
+
   const containerRef = useRef<HTMLDivElement>(null)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
@@ -117,7 +127,7 @@ export function ContactContent() {
   const onSubmit = async (data: ContactFormValues) => {
     setSubmitStatus('loading')
     setServerError('')
-    const result = await sendContactEmail(data)
+    const result = await sendContactEmail({ ...data, ...utmRef.current })
     if (result.success) {
       setSubmitStatus('success')
       reset()
@@ -132,7 +142,7 @@ export function ContactContent() {
     background: 'var(--color-surface-1)',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: 'rgba(255,255,255,0.1)',
+    borderColor: 'var(--color-border-subtle)',
     borderRadius: '8px',
     padding: '12px 14px',
     fontFamily: 'var(--font-body)',
