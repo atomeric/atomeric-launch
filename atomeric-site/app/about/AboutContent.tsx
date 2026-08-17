@@ -1,6 +1,7 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
+import Link from 'next/link'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -30,8 +31,52 @@ const VALUES = [
   { label: 'Client Focus', detail: 'We take on a limited roster. Every client gets strategic depth, not inbox rotations.' },
 ]
 
+const GEO_QUESTIONS = [
+  'My site has an llms.txt file',
+  'GPTBot is allowed in robots.txt',
+  'Key pages have FAQPage schema',
+  'Content pages include an author bio',
+  'My brand appears in Perplexity results',
+]
+
+const TRENDING_SETS: Array<Array<{ cat: string; headline: string }>> = [
+  [
+    { cat: 'GEO',      headline: 'How brands get cited by ChatGPT without paid ads' },
+    { cat: 'INDIA',    headline: 'Why Indian startups are winning at AI-native marketing' },
+    { cat: 'STRATEGY', headline: 'The death of the keyword — and what replaces it' },
+  ],
+  [
+    { cat: 'AI SEARCH', headline: "Perplexity’s referral traffic up 400% year on year" },
+    { cat: 'GEO',       headline: 'llms.txt adoption crosses 12,000 domains' },
+    { cat: 'GROWTH',    headline: 'Zero-click searches reshape the B2B funnel' },
+  ],
+  [
+    { cat: 'CONTENT', headline: 'Structured data triples AI engine citation rates' },
+    { cat: 'INDIA',   headline: 'B2B SaaS brands in India adopt GEO at record pace' },
+    { cat: 'SEARCH',  headline: 'AI Overviews now appear on 45% of all Google queries' },
+  ],
+  [
+    { cat: 'STRATEGY', headline: 'Brands not cited by AI lose 23% of inbound pipeline' },
+    { cat: 'GEO',      headline: 'Author pages become the new entity-building strategy' },
+    { cat: 'GROWTH',   headline: 'Revenue-first marketing outperforms brand-first by 3×' },
+  ],
+  [
+    { cat: 'AI SEARCH', headline: 'ChatGPT becomes #2 for B2B discovery searches' },
+    { cat: 'CONTENT',   headline: 'Long-form content earns 4× more AI citations' },
+    { cat: 'INDIA',     headline: 'Kolkata startups emerge as AI marketing innovators' },
+  ],
+]
+
 export function AboutContent() {
   const containerRef = useRef<HTMLDivElement>(null)
+
+  // GEO Readiness Tool — interactive checkbox state
+  const [geoChecks, setGeoChecks] = useState<boolean[]>([false, false, false, false, false])
+  const geoScore = geoChecks.filter(Boolean).length
+
+  // Trending Topic Card — randomise set on mount (SSR-safe)
+  const [trendingSet, setTrendingSet] = useState(TRENDING_SETS[0])
+  useEffect(() => { setTrendingSet(TRENDING_SETS[Math.floor(Math.random() * TRENDING_SETS.length)]) }, [])
 
   useGSAP(
     () => {
@@ -279,8 +324,8 @@ export function AboutContent() {
               fontSize: 'clamp(120px, 14vw, 180px)',
               fontWeight: 700,
               lineHeight: 1,
-              color: 'var(--color-text-1)',
-              opacity: 0.04,
+              color: 'var(--color-gold)',
+              opacity: 0.22,
               marginBottom: '-48px',
               userSelect: 'none',
             }}
@@ -451,7 +496,7 @@ export function AboutContent() {
             {DIFFERENTIATORS.map((d) => (
               <div
                 key={d.title}
-                className="diff-card"
+                className="diff-card card-lift-translate"
                 style={{
                   background: 'var(--color-surface-2)',
                   borderLeft: '3px solid var(--color-teal)',
@@ -503,12 +548,12 @@ export function AboutContent() {
             className="about-who-grid"
             style={{
               display: 'grid',
-              gridTemplateColumns: 'clamp(180px, 25%, 280px) 1fr',
+              gridTemplateColumns: '1fr 360px',
               gap: '64px',
               alignItems: 'start',
             }}
           >
-            {/* Left: eyebrow label */}
+            {/* Left: label + full copy block */}
             <div>
               <span
                 style={{
@@ -516,16 +561,13 @@ export function AboutContent() {
                   fontSize: '10px',
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
-                  color: 'var(--color-teal)',
+                  color: 'var(--color-gold)',
                   display: 'block',
+                  marginBottom: '20px',
                 }}
               >
                 WHO WE ARE
               </span>
-            </div>
-
-            {/* Right: copy block */}
-            <div>
               <h2
                 style={{
                   fontFamily: 'var(--font-display)',
@@ -545,7 +587,7 @@ export function AboutContent() {
                   fontSize: '17px',
                   color: 'var(--color-text-2)',
                   lineHeight: 1.75,
-                  maxWidth: '580px',
+                  maxWidth: '520px',
                   marginBottom: '24px',
                 }}
               >
@@ -557,20 +599,13 @@ export function AboutContent() {
                   fontSize: '17px',
                   color: 'var(--color-text-2)',
                   lineHeight: 1.75,
-                  maxWidth: '580px',
+                  maxWidth: '520px',
                   marginBottom: '40px',
                 }}
               >
                 That&apos;s the model we chose deliberately — because speed, quality, and accountability don&apos;t survive layers of management. Every client engagement is owned end-to-end by a senior practitioner who cares about the outcome as much as you do.
               </p>
-              {/* Three stat/fact pills in a row */}
-              <div
-                style={{
-                  display: 'flex',
-                  gap: '16px',
-                  flexWrap: 'wrap',
-                }}
-              >
+              <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
                 {[
                   { label: 'Senior-Only Team' },
                   { label: 'No Subcontractors' },
@@ -583,8 +618,9 @@ export function AboutContent() {
                       fontSize: '10.5px',
                       letterSpacing: '0.14em',
                       textTransform: 'uppercase',
-                      color: 'var(--color-text-2)',
-                      border: '1px solid var(--color-border-subtle)',
+                      color: 'var(--color-gold)',
+                      border: '1px solid var(--color-gold-muted)',
+                      background: 'var(--color-gold-subtle)',
                       borderRadius: '4px',
                       padding: '8px 16px',
                     }}
@@ -593,6 +629,86 @@ export function AboutContent() {
                   </span>
                 ))}
               </div>
+            </div>
+
+            {/* Right: GEO Readiness Tool */}
+            <div style={{
+              background: 'var(--color-surface-1)',
+              border: '1px solid rgba(0,115,185,0.18)',
+              borderTop: '2px solid var(--color-teal)',
+              borderRadius: '12px',
+              padding: '28px 24px',
+              alignSelf: 'center',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-teal)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
+                </svg>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-teal)' }}>
+                  GEO Readiness Check
+                </span>
+              </div>
+              <div style={{ marginBottom: '20px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '8px' }}>
+                  <span style={{ fontFamily: 'var(--font-syne)', fontSize: '32px', fontWeight: 600, color: 'var(--color-teal)', letterSpacing: '-1.5px', lineHeight: 1 }}>
+                    {geoScore}<span style={{ fontSize: '16px', fontWeight: 400, color: 'var(--color-text-3)', letterSpacing: 0 }}>/5</span>
+                  </span>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-text-3)' }}>GEO SCORE</span>
+                </div>
+                <div style={{ height: '3px', background: 'var(--color-border-subtle)', borderRadius: '2px' }}>
+                  <div style={{ height: '100%', width: `${geoScore * 20}%`, background: 'var(--color-teal)', borderRadius: '2px', transition: 'width 300ms ease-out' }} />
+                </div>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '20px' }}>
+                {GEO_QUESTIONS.map((q, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setGeoChecks(prev => { const n = [...prev]; n[i] = !n[i]; return n })}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '10px',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: 0,
+                      textAlign: 'left',
+                    }}
+                    aria-pressed={geoChecks[i]}
+                  >
+                    <span style={{
+                      width: '16px',
+                      height: '16px',
+                      minWidth: '16px',
+                      borderRadius: '3px',
+                      border: `1px solid ${geoChecks[i] ? 'var(--color-teal)' : 'var(--color-border-subtle)'}`,
+                      background: geoChecks[i] ? 'var(--color-teal)' : 'transparent',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'all 150ms ease',
+                      marginTop: '2px',
+                      flexShrink: 0,
+                    }}>
+                      {geoChecks[i] && (
+                        <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true">
+                          <path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="var(--color-void)" strokeWidth="1.5" strokeLinecap="round" />
+                        </svg>
+                      )}
+                    </span>
+                    <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--color-text-2)', lineHeight: 1.5 }}>
+                      {q}
+                    </span>
+                  </button>
+                ))}
+              </div>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', lineHeight: 1.55, marginBottom: '16px', minHeight: '36px', color: geoScore <= 2 ? 'var(--color-gold)' : 'var(--color-teal)' }}>
+                {geoScore === 0 ? 'Tick what applies — see your AI readiness score.' : geoScore <= 2 ? 'Your AI visibility needs urgent attention.' : geoScore <= 4 ? "You're on the right track. A few gaps remain." : 'Strong foundation. Ready to make it exceptional.'}
+              </p>
+              <Link href="/contact" style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-teal)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                Get a full GEO audit →
+              </Link>
             </div>
           </div>
         </div>
@@ -626,7 +742,7 @@ export function AboutContent() {
                   fontFamily: 'var(--font-mono)',
                   fontSize: '11px',
                   letterSpacing: '0.18em',
-                  color: 'var(--color-teal)',
+                  color: 'var(--color-gold)',
                   textTransform: 'uppercase',
                   display: 'block',
                   marginBottom: '16px',
@@ -647,6 +763,79 @@ export function AboutContent() {
               >
                 Our values
               </h2>
+
+              {/* Trending Topic Card */}
+              <div style={{
+                marginTop: '32px',
+                background: 'var(--color-void)',
+                border: '1px solid var(--color-border-subtle)',
+                borderRadius: '10px',
+                overflow: 'hidden',
+              }}>
+                <div style={{
+                  padding: '12px 16px',
+                  borderBottom: '1px solid var(--color-border-subtle)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                }}>
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      background: 'var(--color-teal)',
+                      display: 'block',
+                      flexShrink: 0,
+                      animation: 'pulse-dot 2s ease-in-out infinite',
+                    }}
+                  />
+                  <span style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '9px',
+                    letterSpacing: '0.18em',
+                    textTransform: 'uppercase',
+                    color: 'var(--color-text-3)',
+                  }}>
+                    Trending in AI Marketing
+                  </span>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  {trendingSet.map((item, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        padding: '12px 16px',
+                        borderBottom: i < trendingSet.length - 1 ? '1px solid var(--color-border-subtle)' : 'none',
+                        display: 'flex',
+                        gap: '10px',
+                        alignItems: 'flex-start',
+                      }}
+                    >
+                      <span style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '8px',
+                        letterSpacing: '0.12em',
+                        color: 'var(--color-teal)',
+                        textTransform: 'uppercase',
+                        flexShrink: 0,
+                        paddingTop: '3px',
+                      }}>
+                        {item.cat}
+                      </span>
+                      <span style={{
+                        fontFamily: 'var(--font-body)',
+                        fontSize: '12px',
+                        color: 'var(--color-text-2)',
+                        lineHeight: 1.5,
+                      }}>
+                        {item.headline}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
@@ -668,7 +857,7 @@ export function AboutContent() {
                       width: '6px',
                       height: '6px',
                       borderRadius: '50%',
-                      background: 'var(--color-teal)',
+                      background: i >= 2 ? 'var(--color-gold)' : 'var(--color-teal)',
                       flexShrink: 0,
                       marginTop: '8px',
                     }}

@@ -367,14 +367,14 @@ export function ProcessContent() {
                   <div
                     style={{
                       height: '1px',
-                      background: 'rgba(175,171,79,0.2)',
+                      background: 'rgba(201,168,76,0.18)',
                       margin: '0 clamp(20px, 5vw, 80px)',
                     }}
                   />
                 )}
 
                 <div
-                  className="step-block"
+                  className="step-block card-lift"
                   style={{
                     display: 'flex',
                     flexDirection: isReversed ? 'row-reverse' : 'row',

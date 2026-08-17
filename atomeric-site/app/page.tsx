@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -108,6 +108,21 @@ const METRICS = [
   { value: 'GEO', unit: '-First', label: 'Next-gen search visibility, built-in',    accent: true },
 ]
 
+const STATS = [
+  { stat: '45%',      label: 'of Google searches now show an AI Overview',              source: 'Google, 2026'        },
+  { stat: '11×',      label: 'higher conversion from Perplexity vs organic search',     source: 'Industry, 2026'      },
+  { stat: '38%',      label: 'of searches end without a click',                          source: 'SparkToro, 2026'     },
+  { stat: '+40%',     label: 'AI citation boost from adding stats to content',           source: 'GEO Research, 2026'  },
+  { stat: '3×',       label: 'faster growth for AI-native companies',                   source: 'McKinsey, 2026'      },
+  { stat: '4.5B+',    label: 'monthly visits to ChatGPT in 2026',                       source: 'SimilarWeb, 2026'    },
+  { stat: '2.8×',     label: 'more AI citations for GEO-optimised pages',               source: 'Authoritas, 2026'    },
+  { stat: '13',       label: 'content pieces B2B buyers read before contacting a vendor', source: 'Demand Gen, 2026'   },
+  { stat: '+23%',     label: 'branded search uplift for AI-cited brands',                source: 'BrightEdge, 2026'   },
+  { stat: '72%',      label: 'of buyers use AI search during vendor research',           source: 'Gartner, 2026'       },
+  { stat: '−32%', label: 'CAC reduction with AI marketing tools',                   source: 'Forrester, 2026'    },
+  { stat: '₹4.5L cr', label: "India’s D2C market size by 2026",               source: 'IBEF, 2026'          },
+]
+
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function Home() {
@@ -117,6 +132,10 @@ export default function Home() {
   const heroCircleRef = useRef<SVGSVGElement>(null)
   const heroHexRef = useRef<SVGSVGElement>(null)
   const heroCrossRef = useRef<SVGSVGElement>(null)
+
+  // Rotating stat card — randomise on mount (SSR-safe)
+  const [statIdx, setStatIdx] = useState(0)
+  useEffect(() => { setStatIdx(Math.floor(Math.random() * STATS.length)) }, [])
 
   // ── Hero floating shapes ──────────────────────────────────────────────────
   useGSAP(() => {
@@ -565,7 +584,7 @@ export default function Home() {
           }}
         >
           {/* ★ THE BIG ATOMERIC WORDMARK — wrapper receives entrance anim, inner receives scrub */}
-          <div className="hero-logo-wrap" style={{ marginBottom: '44px' }}>
+          <div className="hero-logo-wrap" style={{ marginBottom: '8px' }}>
             <h1
               className="hero-logo-big"
               aria-label="Atomeric — AI Growth Studio India"
@@ -592,9 +611,9 @@ export default function Home() {
             aria-hidden="true"
             style={{
               width: '1px',
-              height: '52px',
+              height: '44px',
               background: 'linear-gradient(to bottom, rgba(0,115,185,0.5), transparent)',
-              margin: '0 auto 36px',
+              margin: '0 auto 20px',
             }}
           />
             <div className="hero-body">
@@ -750,61 +769,120 @@ export default function Home() {
           ════════════════════════════════════════════════════════ */}
       <section id="services" aria-label="Services" style={{ padding: '128px clamp(20px, 5vw, 80px)', background: 'var(--color-void)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          {/* Section header */}
-          <div style={{ maxWidth: '600px', marginBottom: '72px' }}>
-            <span
-              className="section-header-el"
-              style={{
-                display: 'block',
+          {/* Section header — 2-column: copy left, rotating stat card right */}
+          <div
+            className="services-header-grid"
+            style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '80px', alignItems: 'center', marginBottom: '72px' }}
+          >
+            <div>
+              <span
+                className="section-header-el"
+                style={{
+                  display: 'block',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '10px',
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-teal)',
+                  marginBottom: '20px',
+                }}
+              >
+                WHERE WE WORK
+              </span>
+              <h2
+                className="section-header-el"
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'clamp(36px, 5vw, 52px)',
+                  fontWeight: 700,
+                  color: 'var(--color-text-1)',
+                  letterSpacing: '-2px',
+                  lineHeight: 1.05,
+                  marginBottom: '16px',
+                }}
+              >
+                Your competitors are moving faster.<br />Here&apos;s how we close that gap.
+              </h2>
+              <p
+                className="section-header-el"
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '17px',
+                  color: 'var(--color-text-2)',
+                  lineHeight: 1.7,
+                }}
+              >
+                Most brands choose between speed and quality. You shouldn&apos;t have to. Pick one growth track — or run all four.
+              </p>
+              <Link href="/services" style={{
                 fontFamily: 'var(--font-mono)',
-                fontSize: '10px',
-                letterSpacing: '0.18em',
+                fontSize: '11px',
+                letterSpacing: '0.12em',
                 textTransform: 'uppercase',
                 color: 'var(--color-teal)',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                marginTop: '16px',
+              }}>
+                Explore all services →
+              </Link>
+            </div>
+
+            {/* Rotating AI Marketing Stat Card */}
+            <div
+              className="section-header-el"
+              style={{
+                background: 'var(--color-surface-1)',
+                border: '1px solid rgba(0,115,185,0.15)',
+                borderTop: '2px solid var(--color-teal)',
+                borderRadius: '12px',
+                padding: '32px 28px',
+                boxShadow: '0 4px 40px rgba(0,115,185,0.06)',
+              }}
+            >
+              <span style={{
+                display: 'block',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '9px',
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: 'var(--color-text-3)',
                 marginBottom: '20px',
-              }}
-            >
-              WHERE WE WORK
-            </span>
-            <h2
-              className="section-header-el"
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(36px, 5vw, 52px)',
-                fontWeight: 700,
-                color: 'var(--color-text-1)',
+              }}>
+                AI MARKETING · 2026
+              </span>
+              <div style={{
+                fontFamily: 'var(--font-syne)',
+                fontSize: 'clamp(44px, 5vw, 60px)',
+                fontWeight: 600,
+                color: 'var(--color-teal)',
                 letterSpacing: '-2px',
-                lineHeight: 1.05,
-                marginBottom: '16px',
-              }}
-            >
-              Your competitors are moving faster.<br />Here&apos;s how we close that gap.
-            </h2>
-            <p
-              className="section-header-el"
-              style={{
+                lineHeight: 1,
+                marginBottom: '14px',
+              }}>
+                {STATS[statIdx].stat}
+              </div>
+              <p style={{
                 fontFamily: 'var(--font-body)',
-                fontSize: '17px',
+                fontSize: '14px',
                 color: 'var(--color-text-2)',
-                lineHeight: 1.7,
-              }}
-            >
-              Most brands choose between speed and quality. You shouldn&apos;t have to. Pick one growth track — or run all four.
-            </p>
-            <Link href="/services" style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '11px',
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              color: 'var(--color-teal)',
-              textDecoration: 'none',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              marginTop: '16px',
-            }}>
-              Explore all services →
-            </Link>
+                lineHeight: 1.65,
+                marginBottom: '16px',
+              }}>
+                {STATS[statIdx].label}
+              </p>
+              <span style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '10px',
+                letterSpacing: '0.1em',
+                color: 'var(--color-text-3)',
+                textTransform: 'uppercase',
+              }}>
+                — {STATS[statIdx].source}
+              </span>
+            </div>
           </div>
 
           {/* 2×2 grid */}
@@ -824,8 +902,8 @@ export default function Home() {
                 style={{
                   position: 'relative',
                   background: 'var(--color-surface-1)',
-                  border: '1px solid rgba(12,4,87,0.1)',
-                  borderTop: '1px solid rgba(0,115,185,0.28)',
+                  border: '1px solid var(--color-border-subtle)',
+                  borderTop: (s.num === '01' || s.num === '04') ? '2px solid var(--color-gold)' : '2px solid rgba(0,115,185,0.28)',
                   borderRadius: '12px',
                   padding: '36px 32px 32px',
                   overflow: 'hidden',
@@ -898,8 +976,8 @@ export default function Home() {
                         fontFamily: 'var(--font-body)',
                         fontSize: '11.5px',
                         color: 'var(--color-text-3)',
-                        background: 'rgba(255,255,255,0.65)',
-                        border: '1px solid rgba(12,4,87,0.1)',
+                        background: 'var(--color-surface-1)',
+                        border: '1px solid var(--color-border-subtle)',
                         borderRadius: '4px',
                         padding: '4px 10px',
                         whiteSpace: 'nowrap',
@@ -925,7 +1003,7 @@ export default function Home() {
         style={{
           padding: '128px clamp(20px, 5vw, 80px)',
           background: 'var(--color-surface-1)',
-          borderTop: '1px solid rgba(12,4,87,0.08)',
+          borderTop: '1px solid var(--color-border-subtle)',
         }}
       >
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -940,7 +1018,7 @@ export default function Home() {
                   fontSize: '10px',
                   letterSpacing: '0.18em',
                   textTransform: 'uppercase',
-                  color: 'var(--color-teal)',
+                  color: 'var(--color-gold)',
                   marginBottom: '20px',
                 }}
               >
@@ -998,7 +1076,7 @@ export default function Home() {
                   top: '20px',
                   bottom: '20px',
                   width: '1px',
-                  background: 'rgba(12,4,87,0.1)',
+                  background: 'var(--color-border-subtle)',
                 }}
               />
               {/* Animated fill */}
@@ -1126,7 +1204,7 @@ export default function Home() {
               display: 'grid',
               gridTemplateColumns: 'repeat(3, 1fr)',
               gap: '1px',
-              background: 'rgba(12,4,87,0.1)',
+              background: 'var(--color-border-subtle)',
               borderRadius: '12px',
               overflow: 'hidden',
               perspective: '1000px',
@@ -1135,7 +1213,7 @@ export default function Home() {
             {PRINCIPLES.map((p, i) => (
               <div
                 key={p.title}
-                className="principle-col"
+                className="principle-col card-lift"
                 style={{
                   padding: '40px 32px',
                 }}
@@ -1243,7 +1321,7 @@ export default function Home() {
                     fontWeight: 600,
                     letterSpacing: '-2px',
                     lineHeight: 1,
-                    color: 'var(--color-teal)',
+                    color: 'var(--color-gold)',
                   }}
                 >
                   {m.value}
