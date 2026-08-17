@@ -10,6 +10,13 @@ gsap.registerPlugin(ScrollTrigger)
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
+const SERVICE_STATS = [
+  { num: '01', name: 'Strategy',  stat: '3×',    desc: 'faster to revenue',          href: '#track-01' },
+  { num: '02', name: 'Build',     stat: '48h',   desc: 'from brief to delivery',     href: '#track-02' },
+  { num: '03', name: 'Grow',      stat: '+40%',  desc: 'qualified pipeline uplift',  href: '#track-03' },
+  { num: '04', name: 'Transform', stat: '6mo',   desc: 'ahead of competitors',       href: '#track-04' },
+]
+
 const TRACKS = [
   {
     num: '01',
@@ -215,70 +222,53 @@ export function ServicesContent() {
             zIndex: 1,
             display: 'flex',
             flexDirection: 'column',
-            gap: '12px',
+            gap: '10px',
             pointerEvents: 'auto',
           }}
         >
-          {TRACKS.map((track) => (
+          {SERVICE_STATS.map((item) => (
             <a
-              key={track.num}
-              href={`#track-${track.num}`}
+              key={item.num}
+              href={item.href}
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                padding: '10px 16px',
-                border: '1px solid var(--color-border-subtle)',
-                borderRadius: '100px',
-                background: 'rgba(233,247,218,0.7)',
+                display: 'block',
+                padding: '12px 14px',
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderLeft: '2px solid #0DBFAD',
+                borderRadius: '8px',
+                textDecoration: 'none',
+                cursor: 'pointer',
+                transition: 'background 200ms cubic-bezier(0.23,1,0.32,1)',
+                minWidth: '160px',
                 backdropFilter: 'blur(8px)',
                 WebkitBackdropFilter: 'blur(8px)',
-                textDecoration: 'none',
-                transition: 'border-color 200ms cubic-bezier(0.23,1,0.32,1), background 200ms cubic-bezier(0.23,1,0.32,1)',
-                cursor: 'pointer',
               }}
               onMouseEnter={(e) => {
-                ;(e.currentTarget as HTMLElement).style.borderColor = 'rgba(0,115,185,0.35)'
-                ;(e.currentTarget as HTMLElement).style.background = 'rgba(0,115,185,0.06)'
+                ;(e.currentTarget as HTMLElement).style.background = 'rgba(13,191,173,0.08)'
               }}
               onMouseLeave={(e) => {
-                ;(e.currentTarget as HTMLElement).style.borderColor = 'var(--color-border-subtle)'
-                ;(e.currentTarget as HTMLElement).style.background = 'rgba(233,247,218,0.7)'
+                ;(e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.04)'
               }}
             >
-              <span
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '9px',
-                  color: 'var(--color-teal)',
-                  letterSpacing: '0.12em',
-                }}
-              >
-                {track.num}
-              </span>
-              <span
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '10px',
-                  color: 'var(--color-text-2)',
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                {track.name}
-              </span>
-              <span
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '9px',
-                  color: 'var(--color-text-3)',
-                  marginLeft: '2px',
-                }}
-                aria-hidden="true"
-              >
-                ↓
-              </span>
+              {/* Number + name row */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '9px', color: '#C9A84C', letterSpacing: '0.12em' }}>
+                  {item.num}
+                </span>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'rgba(255,255,255,0.85)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                  {item.name}
+                </span>
+              </div>
+              {/* Stat row */}
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
+                <span style={{ fontFamily: 'var(--font-syne)', fontSize: '18px', fontWeight: 600, color: '#0DBFAD', letterSpacing: '-0.5px', lineHeight: 1 }}>
+                  {item.stat}
+                </span>
+                <span style={{ fontFamily: 'var(--font-body)', fontSize: '10px', color: 'rgba(255,255,255,0.4)', lineHeight: 1.4, whiteSpace: 'nowrap' }}>
+                  {item.desc}
+                </span>
+              </div>
             </a>
           ))}
         </div>
@@ -399,7 +389,7 @@ export function ServicesContent() {
                 )}
 
                 <div
-                  className="track-block"
+                  className="track-block card-lift"
                   style={{
                     display: 'flex',
                     flexDirection: isReversed ? 'row-reverse' : 'row',

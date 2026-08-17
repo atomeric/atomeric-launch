@@ -53,7 +53,7 @@ export function LoadingScreen() {
         position: 'fixed',
         inset: 0,
         zIndex: 9999,
-        background: '#e9f7da',
+        background: '#060C18',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -73,8 +73,8 @@ export function LoadingScreen() {
           userSelect: 'none',
         }}
       >
-        <span style={{ color: 'var(--color-text-1)' }}>atom</span>
-        <span style={{ color: 'var(--color-teal)' }}>eric</span>
+        <span style={{ color: 'rgba(255,255,255,0.85)' }}>atom</span>
+        <span style={{ color: '#0DBFAD' }}>eric</span>
       </span>
       <div
         ref={lineRef}
@@ -82,7 +82,7 @@ export function LoadingScreen() {
         style={{
           width: '120px',
           height: '1px',
-          background: 'var(--color-teal)',
+          background: '#0DBFAD',
           transformOrigin: 'center',
         }}
       />
