@@ -6,6 +6,7 @@ import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { CtaBanner } from '@/components/layout/CtaBanner'
+import { CASE_STUDIES } from '@/lib/case-studies'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -107,6 +108,8 @@ const METRICS = [
   { value: '5',   unit: '-Step',  label: 'Proven growth methodology',             accent: false },
   { value: 'GEO', unit: '-First', label: 'Next-gen search visibility, built-in',    accent: true },
 ]
+
+const featured = [CASE_STUDIES[0], CASE_STUDIES[3]]
 
 const STATS = [
   { stat: '45%',      label: 'of Google searches now show an AI Overview',              source: 'Google, 2026'        },
@@ -991,6 +994,214 @@ export default function Home() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════
+          §3b  CLIENT RESULTS — Featured case studies
+          ════════════════════════════════════════════════════════ */}
+      <section
+        aria-label="Client Results"
+        style={{
+          padding: '128px clamp(20px, 5vw, 80px)',
+          background: 'var(--color-surface-1)',
+          borderTop: '1px solid var(--color-border-subtle)',
+          borderBottom: '1px solid var(--color-border-subtle)',
+        }}
+      >
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          {/* Section header */}
+          <div style={{ marginBottom: '72px' }}>
+            <span
+              className="section-header-el"
+              style={{
+                display: 'block',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '10px',
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                color: 'var(--color-teal)',
+                marginBottom: '20px',
+              }}
+            >
+              CLIENT RESULTS
+            </span>
+            <h2
+              className="section-header-el"
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(36px, 5vw, 52px)',
+                fontWeight: 700,
+                color: 'var(--color-text-1)',
+                letterSpacing: '-2px',
+                lineHeight: 1.05,
+                marginBottom: '16px',
+              }}
+            >
+              What GEO-led strategy delivers.
+            </h2>
+            <p
+              className="section-header-el"
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '17px',
+                color: 'var(--color-text-2)',
+                lineHeight: 1.7,
+              }}
+            >
+              Real outcomes across 5 verticals.
+            </p>
+          </div>
+
+          {/* Featured cards — 2 columns */}
+          <div
+            className="case-results-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '20px',
+              marginBottom: '40px',
+            }}
+          >
+            {featured.map((cs) => (
+              <Link
+                key={cs.slug}
+                href={`/case-studies/${cs.slug}`}
+                style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}
+              >
+                <article
+                  className="card-lift-translate"
+                  style={{
+                    height: '100%',
+                    background: 'var(--color-void)',
+                    border: '1px solid var(--color-border-subtle)',
+                    borderTop: '2px solid var(--color-teal-border)',
+                    borderRadius: '12px',
+                    padding: '36px 32px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '16px',
+                  }}
+                >
+                  {/* Industry tag */}
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '9.5px',
+                      letterSpacing: '0.16em',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-teal)',
+                      background: 'var(--color-accent-muted)',
+                      border: '1px solid var(--color-border-teal)',
+                      borderRadius: '4px',
+                      padding: '4px 10px',
+                      alignSelf: 'flex-start',
+                    }}
+                  >
+                    {cs.industry}
+                  </span>
+
+                  {/* Client label */}
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '11px',
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-text-3)',
+                    }}
+                  >
+                    {cs.clientLabel}
+                  </p>
+
+                  {/* Challenge one-liner — truncated at 100 chars */}
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '15px',
+                      color: 'var(--color-text-2)',
+                      lineHeight: 1.65,
+                      flex: 1,
+                    }}
+                  >
+                    {cs.challengeOneLiner.substring(0, 100) + (cs.challengeOneLiner.length > 100 ? '…' : '')}
+                  </p>
+
+                  {/* Hero stat */}
+                  <div
+                    style={{
+                      borderTop: '1px solid var(--color-border-subtle)',
+                      paddingTop: '20px',
+                      display: 'flex',
+                      alignItems: 'flex-end',
+                      justifyContent: 'space-between',
+                      gap: '16px',
+                    }}
+                  >
+                    <div>
+                      <div
+                        style={{
+                          fontFamily: 'var(--font-syne)',
+                          fontSize: 'clamp(28px, 3.5vw, 44px)',
+                          fontWeight: 600,
+                          letterSpacing: '-2px',
+                          lineHeight: 1,
+                          color: 'var(--color-teal)',
+                        }}
+                      >
+                        {cs.heroStat}
+                      </div>
+                      <div
+                        style={{
+                          fontFamily: 'var(--font-body)',
+                          fontSize: '12px',
+                          color: 'var(--color-text-3)',
+                          lineHeight: 1.5,
+                          marginTop: '6px',
+                        }}
+                      >
+                        {cs.heroStatLabel}
+                      </div>
+                    </div>
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '11px',
+                        letterSpacing: '0.06em',
+                        color: 'var(--color-teal)',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      Read →
+                    </span>
+                  </div>
+                </article>
+              </Link>
+            ))}
+          </div>
+
+          {/* See all link */}
+          <div style={{ textAlign: 'center' }}>
+            <Link
+              href="/case-studies"
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '11px',
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                color: 'var(--color-teal)',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+              }}
+            >
+              See all 5 results →
+            </Link>
+          </div>
+        </div>
+        {/* Mobile responsive — cannot touch globals.css */}
+        <style>{`@media (max-width: 767px) { .case-results-grid { grid-template-columns: 1fr !important; } }`}</style>
       </section>
 
       {/* ════════════════════════════════════════════════════════
