@@ -6,11 +6,24 @@ import { contactSchema, type ContactFormValues } from '@/app/contact/schema'
 import { Ratelimit } from '@upstash/ratelimit'
 import { Redis } from '@upstash/redis'
 
-const ratelimit = new Ratelimit({
-  redis: Redis.fromEnv(),
-  limiter: Ratelimit.slidingWindow(5, '10 m'),
-  analytics: true,
-})
+// Lazy init — Redis.fromEnv() throws at module level if env vars are absent.
+// Initialise on first use so missing Upstash config degrades gracefully
+// instead of crashing every request with a 500.
+let _ratelimit: Ratelimit | null | undefined = undefined
+function getRatelimit(): Ratelimit | null {
+  if (_ratelimit !== undefined) return _ratelimit
+  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+    console.warn('Upstash env vars not set — rate limiting disabled')
+    _ratelimit = null
+    return null
+  }
+  _ratelimit = new Ratelimit({
+    redis: Redis.fromEnv(),
+    limiter: Ratelimit.slidingWindow(5, '10 m'),
+    analytics: true,
+  })
+  return _ratelimit
+}
 
 function sanitize(str: string): string {
   return str
@@ -32,8 +45,11 @@ export async function sendContactEmail(
   const headersList = await headers()
   const ip = headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
 
-  const { success } = await ratelimit.limit(ip)
-  if (!success) return { success: false, error: 'Too many requests. Please wait a few minutes.' }
+  const rl = getRatelimit()
+  if (rl) {
+    const { success } = await rl.limit(ip)
+    if (!success) return { success: false, error: 'Too many requests. Please wait a few minutes.' }
+  }
 
   const parsed = contactSchema.safeParse(data)
   if (!parsed.success) {
