@@ -37,17 +37,12 @@ function sanitize(str: string): string {
 export async function sendContactEmail(
   data: ContactFormValues
 ): Promise<{ success: boolean; error?: string }> {
-  const resendKey   = process.env.RESEND_API_KEY
-  const fromEmail   = process.env.CONTACT_FROM_EMAIL
-  const toEmail     = process.env.CONTACT_TO_EMAIL
+  const resendKey = process.env.RESEND_API_KEY
+  const fromEmail = process.env.CONTACT_FROM_EMAIL ?? 'Atomeric <noreply@atomeric.com>'
+  const toEmail   = process.env.CONTACT_TO_EMAIL   ?? 'atomeric14@gmail.com'
 
-  if (!resendKey || !fromEmail || !toEmail) {
-    const missing = [
-      !resendKey  && 'RESEND_API_KEY',
-      !fromEmail  && 'CONTACT_FROM_EMAIL',
-      !toEmail    && 'CONTACT_TO_EMAIL',
-    ].filter(Boolean).join(', ')
-    console.error(`Missing required env vars: ${missing}`)
+  if (!resendKey) {
+    console.error('RESEND_API_KEY is not configured')
     return { success: false, error: 'Email service is not configured.' }
   }
 
