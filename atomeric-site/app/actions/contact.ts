@@ -47,8 +47,13 @@ export async function sendContactEmail(
 
   const rl = getRatelimit()
   if (rl) {
-    const { success } = await rl.limit(ip)
-    if (!success) return { success: false, error: 'Too many requests. Please wait a few minutes.' }
+    try {
+      const { success } = await rl.limit(ip)
+      if (!success) return { success: false, error: 'Too many requests. Please wait a few minutes.' }
+    } catch (rlErr) {
+      console.error('Rate limit check failed — skipping:', rlErr)
+      // Degrade gracefully: allow the request through rather than 500ing
+    }
   }
 
   const parsed = contactSchema.safeParse(data)
