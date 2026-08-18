@@ -37,13 +37,27 @@ function sanitize(str: string): string {
 export async function sendContactEmail(
   data: ContactFormValues
 ): Promise<{ success: boolean; error?: string }> {
-  if (!process.env.RESEND_API_KEY) {
-    console.error('RESEND_API_KEY is not configured')
+  const resendKey   = process.env.RESEND_API_KEY
+  const fromEmail   = process.env.CONTACT_FROM_EMAIL
+  const toEmail     = process.env.CONTACT_TO_EMAIL
+
+  if (!resendKey || !fromEmail || !toEmail) {
+    const missing = [
+      !resendKey  && 'RESEND_API_KEY',
+      !fromEmail  && 'CONTACT_FROM_EMAIL',
+      !toEmail    && 'CONTACT_TO_EMAIL',
+    ].filter(Boolean).join(', ')
+    console.error(`Missing required env vars: ${missing}`)
     return { success: false, error: 'Email service is not configured.' }
   }
 
-  const headersList = await headers()
-  const ip = headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
+  let headersList
+  try {
+    headersList = await headers()
+  } catch {
+    headersList = null
+  }
+  const ip = headersList?.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
 
   const rl = getRatelimit()
   if (rl) {
@@ -76,10 +90,10 @@ export async function sendContactEmail(
   const sUtmContent  = utmContent  ? sanitize(utmContent)  : ''
 
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY)
+    const resend = new Resend(resendKey)
     await resend.emails.send({
-      from: 'Atomeric <noreply@atomeric.com>',
-      to: process.env.CONTACT_TO_EMAIL ?? 'atomeric14@gmail.com',
+      from: fromEmail,
+      to: toEmail,
       replyTo: email,
       subject: `New strategy call request from ${name}${company ? ` — ${company}` : ''}`,
       html: `
@@ -116,6 +130,6 @@ export async function sendContactEmail(
     return { success: true }
   } catch (err) {
     console.error('Resend error:', err)
-    return { success: false, error: `Failed to send — please email us directly at ${process.env.CONTACT_TO_EMAIL ?? 'connect@atomeric.com'}.` }
+    return { success: false, error: `Failed to send — please email us directly at ${toEmail}.` }
   }
 }
