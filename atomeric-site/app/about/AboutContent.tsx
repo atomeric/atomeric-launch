@@ -356,6 +356,87 @@ export function AboutContent() {
         </div>
       </section>
 
+      {/* ── §2b FOUNDER'S MESSAGE ────────────────────────────────── */}
+      <section
+        aria-label="A note from our founder"
+        style={{
+          paddingTop: '80px',
+          paddingBottom: '80px',
+          paddingLeft: 'clamp(20px, 5vw, 80px)',
+          paddingRight: 'clamp(20px, 5vw, 80px)',
+          background: 'var(--color-void)',
+        }}
+      >
+        <div style={{ maxWidth: '680px', margin: '0 auto', padding: '0' }}>
+          <div
+            style={{
+              borderLeft: '3px solid var(--color-gold)',
+              paddingLeft: '28px',
+            }}
+          >
+            <p
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '11px',
+                fontWeight: 700,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                color: 'var(--color-gold)',
+                marginBottom: '28px',
+                margin: '0 0 28px',
+              }}
+            >
+              A Note from Our Founder
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '16px',
+                lineHeight: 1.75,
+                color: 'var(--color-text-2)',
+                margin: '0 0 20px',
+              }}
+            >
+              Around 2023, something shifted in how buyers make decisions — and most of the industry missed it. When a founder wants to know which CRM to use, which growth partner to hire, or which approach to SEO is worth their budget, they no longer open Google. They open ChatGPT, Perplexity, or Gemini. They ask a question and receive a recommendation. And the brands that don&apos;t exist in those recommendations effectively don&apos;t exist at all. I have watched this happen in real time across the companies I have been close to. The shift is not subtle. Search was once the front door to discovery. It is now the back catalogue. The new front door is AI-generated recommendation — and the rules for earning a place there are entirely different from the rules that governed the last two decades.
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '16px',
+                lineHeight: 1.75,
+                color: 'var(--color-text-2)',
+                margin: '0 0 20px',
+              }}
+            >
+              Here is what I kept seeing: founders sitting across from agencies being sold impressions, clicks, and engagement metrics while their pipeline stayed flat. The agencies were not incompetent. They were operating a model that made sense when reach was the bottleneck. But the bottleneck changed. In a recommendation economy, what matters is authority — deep, specific, well-sourced content that AI systems cite when someone asks a relevant question. The agency model optimised for the attention economy — broad reach, short content, fast production — is structurally wrong for what buyers now expect. I spent time inside businesses where we got this right, and businesses where we got it badly wrong. The difference was never budget. It was whether the growth engine was built to earn trust or to buy it. Most of what agencies sell today buys attention. Almost none of it earns recommendation. That gap is what Atomeric was built to close.
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '16px',
+                lineHeight: 1.75,
+                color: 'var(--color-text-2)',
+                margin: '0 0 20px',
+              }}
+            >
+              We do not sell retainers that pad hours. We do not produce content that looks good in a report but gets ignored by the systems that now drive discovery. We do not take on clients whose problem is not one we are genuinely equipped to solve. What we believe — and what was true before Atomeric existed as a name — is that growth which compounds is built on credibility, not coverage. The brands that will own their categories over the next decade are not the ones with the largest budgets. They are the ones that became the authoritative answer: in AI engines, in industry conversations, in the rooms where buying decisions actually happen. That takes a different kind of work. Slower to start, harder to copy, and far more durable than anything a campaign can produce. We built Atomeric to do that work.
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '13px',
+                fontWeight: 600,
+                fontStyle: 'italic',
+                color: 'var(--color-text-3)',
+                margin: '28px 0 0',
+              }}
+            >
+              Founder, Atomeric
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ── §3 WHY WE BUILT ATOMERIC ─────────────────────────────── */}
       <section
         className="about-story"
