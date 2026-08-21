@@ -7,10 +7,14 @@
 index.html
 WEBSITE-GUIDE.html
 font-picker.html
+seo-master-playbook.html
 
 # Claude Code settings
 .claude/
 skills-guide.html
+
+# Products live in their own git repos — don't track from here
+Products/
 
 # OS
 .DS_Store
