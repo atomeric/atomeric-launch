@@ -13,7 +13,7 @@ export default function CaseStudiesPage() {
     <main id="main-content">
       {/* ── Hero ── */}
       <section
-        aria-label="Client Results"
+        aria-label="Case Studies"
         style={{
           paddingTop: '140px',
           paddingBottom: '80px',
@@ -34,7 +34,7 @@ export default function CaseStudiesPage() {
               marginBottom: '20px',
             }}
           >
-            CLIENT RESULTS
+            CASE STUDIES
           </span>
           <h1
             style={{
@@ -97,115 +97,140 @@ export default function CaseStudiesPage() {
                   border: '1px solid var(--color-border-subtle)',
                   borderTop: '2px solid var(--color-teal-border)',
                   borderRadius: '12px',
-                  padding: '36px 32px',
+                  padding: '0',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '16px',
+                  gap: '0',
+                  overflow: 'hidden',
                 }}
               >
-                {/* Industry tag */}
-                <span
-                  style={{
-                    display: 'inline-block',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '9.5px',
-                    letterSpacing: '0.16em',
-                    textTransform: 'uppercase',
-                    color: 'var(--color-teal)',
-                    background: 'var(--color-accent-muted)',
-                    border: '1px solid var(--color-border-teal)',
-                    borderRadius: '4px',
-                    padding: '4px 10px',
-                    alignSelf: 'flex-start',
-                  }}
-                >
-                  {cs.industry}
-                </span>
+                {/* Thumbnail */}
+                <div style={{
+                  width: '100%',
+                  aspectRatio: '16/9',
+                  overflow: 'hidden',
+                  borderRadius: '0',
+                  background: 'var(--color-surface-2, #0B1425)',
+                  flexShrink: 0,
+                }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/case-studies/${cs.slug}.jpg`}
+                    alt={cs.clientLabel}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.4s ease' }}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
 
-                {/* Client label */}
-                <p
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '11px',
-                    letterSpacing: '0.08em',
-                    textTransform: 'uppercase',
-                    color: 'var(--color-text-3)',
-                  }}
-                >
-                  {cs.clientLabel}
-                </p>
-
-                {/* Challenge one-liner */}
-                <p
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '15px',
-                    color: 'var(--color-text-2)',
-                    lineHeight: 1.65,
-                    flex: 1,
-                  }}
-                >
-                  {cs.challengeOneLiner}
-                </p>
-
-                {/* Hero stat */}
-                <div
-                  style={{
-                    borderTop: '1px solid var(--color-border-subtle)',
-                    paddingTop: '20px',
-                    display: 'flex',
-                    alignItems: 'flex-end',
-                    justifyContent: 'space-between',
-                    gap: '16px',
-                  }}
-                >
-                  <div>
-                    <div
-                      style={{
-                        fontFamily: 'var(--font-syne)',
-                        fontSize: 'clamp(32px, 4vw, 48px)',
-                        fontWeight: 600,
-                        letterSpacing: '-2px',
-                        lineHeight: 1,
-                        color: 'var(--color-teal)',
-                      }}
-                    >
-                      {cs.heroStat}
-                    </div>
-                    <div
-                      style={{
-                        fontFamily: 'var(--font-body)',
-                        fontSize: '12px',
-                        color: 'var(--color-text-3)',
-                        lineHeight: 1.5,
-                        marginTop: '6px',
-                      }}
-                    >
-                      {cs.heroStatLabel}
-                    </div>
-                  </div>
+                {/* Card body */}
+                <div style={{ padding: '24px 28px 28px', display: 'flex', flexDirection: 'column', gap: '16px', flex: 1 }}>
+                  {/* Industry tag */}
                   <span
+                    style={{
+                      display: 'inline-block',
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '9.5px',
+                      letterSpacing: '0.16em',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-teal)',
+                      background: 'var(--color-accent-muted)',
+                      border: '1px solid var(--color-border-teal)',
+                      borderRadius: '4px',
+                      padding: '4px 10px',
+                      alignSelf: 'flex-start',
+                    }}
+                  >
+                    {cs.industry}
+                  </span>
+
+                  {/* Client label */}
+                  <p
                     style={{
                       fontFamily: 'var(--font-mono)',
                       fontSize: '11px',
-                      letterSpacing: '0.06em',
-                      color: 'var(--color-teal)',
-                      whiteSpace: 'nowrap',
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-text-3)',
                     }}
                   >
-                    Read the full story →
-                  </span>
+                    {cs.clientLabel}
+                  </p>
+
+                  {/* Challenge one-liner */}
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '15px',
+                      color: 'var(--color-text-2)',
+                      lineHeight: 1.65,
+                      flex: 1,
+                    }}
+                  >
+                    {cs.challengeOneLiner}
+                  </p>
+
+                  {/* Hero stat */}
+                  <div
+                    style={{
+                      borderTop: '1px solid var(--color-border-subtle)',
+                      paddingTop: '20px',
+                      display: 'flex',
+                      alignItems: 'flex-end',
+                      justifyContent: 'space-between',
+                      gap: '16px',
+                    }}
+                  >
+                    <div>
+                      <div
+                        style={{
+                          fontFamily: 'var(--font-syne)',
+                          fontSize: 'clamp(32px, 4vw, 48px)',
+                          fontWeight: 600,
+                          letterSpacing: '-2px',
+                          lineHeight: 1,
+                          color: 'var(--color-teal)',
+                        }}
+                      >
+                        {cs.heroStat}
+                      </div>
+                      <div
+                        style={{
+                          fontFamily: 'var(--font-body)',
+                          fontSize: '12px',
+                          color: 'var(--color-text-3)',
+                          lineHeight: 1.5,
+                          marginTop: '6px',
+                        }}
+                      >
+                        {cs.heroStatLabel}
+                      </div>
+                    </div>
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '11px',
+                        letterSpacing: '0.06em',
+                        color: 'var(--color-teal)',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      Read the full story →
+                    </span>
+                  </div>
                 </div>
               </article>
             </Link>
           ))}
         </div>
 
-        {/* Mobile responsive override */}
+        {/* Mobile responsive override + image hover */}
         <style>{`
           @media (max-width: 767px) {
             .case-studies-grid { grid-template-columns: 1fr !important; }
           }
+          .card-lift-translate img { transition: transform 0.4s ease; }
+          .card-lift-translate:hover img { transform: scale(1.04); }
         `}</style>
       </section>
     </main>

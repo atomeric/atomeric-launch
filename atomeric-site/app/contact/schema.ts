@@ -7,11 +7,11 @@ export const contactSchema = z.object({
   track: z.string().trim().min(1, 'Please select a service track').max(100),
   budget: z.string().trim().min(1, 'Please select a budget range').max(100),
   message: z.string().trim().min(10, 'Message must be at least 10 characters').max(2000, 'Message must be under 2000 characters'),
-  utmSource: z.string().optional(),
-  utmMedium: z.string().optional(),
-  utmCampaign: z.string().optional(),
-  utmTerm: z.string().optional(),
-  utmContent: z.string().optional(),
+  utmSource: z.string().max(200).optional(),
+  utmMedium: z.string().max(200).optional(),
+  utmCampaign: z.string().max(200).optional(),
+  utmTerm: z.string().max(200).optional(),
+  utmContent: z.string().max(200).optional(),
 })
 
 export type ContactFormValues = z.infer<typeof contactSchema>

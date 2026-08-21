@@ -39,10 +39,14 @@ export async function sendContactEmail(
 ): Promise<{ success: boolean; error?: string }> {
   const resendKey = process.env.RESEND_API_KEY
   const fromEmail = process.env.CONTACT_FROM_EMAIL ?? 'Atomeric <noreply@atomeric.com>'
-  const toEmail   = process.env.CONTACT_TO_EMAIL   ?? 'atomeric14@gmail.com'
+  const toEmail   = process.env.CONTACT_TO_EMAIL
 
   if (!resendKey) {
     console.error('RESEND_API_KEY is not configured')
+    return { success: false, error: 'Email service is not configured.' }
+  }
+  if (!toEmail) {
+    console.error('CONTACT_TO_EMAIL is not configured')
     return { success: false, error: 'Email service is not configured.' }
   }
 
@@ -52,7 +56,12 @@ export async function sendContactEmail(
   } catch {
     headersList = null
   }
-  const ip = headersList?.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown'
+  // x-real-ip is set by Vercel's edge and cannot be spoofed by clients.
+  // Fall back to the first entry of x-forwarded-for only if x-real-ip is absent.
+  const ip =
+    headersList?.get('x-real-ip')?.trim() ??
+    headersList?.get('x-forwarded-for')?.split(',')[0]?.trim() ??
+    'unknown'
 
   const rl = getRatelimit()
   if (rl) {

@@ -6,6 +6,7 @@ import { Providers } from '@/components/providers'
 import { LoadingScreen } from '@/components/layout/LoadingScreen'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
+import { BrandStrip } from '@/components/layout/BrandStrip'
 import { FloatingCTA } from '@/components/layout/FloatingCTA'
 import { ReducedMotionProvider } from '@/components/ReducedMotionProvider'
 
@@ -165,6 +166,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <LoadingScreen />
           <Navigation />
           {children}
+          <BrandStrip />
           <Footer />
           <FloatingCTA />
         </Providers>
